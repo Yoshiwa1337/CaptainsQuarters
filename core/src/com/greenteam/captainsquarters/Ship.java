@@ -31,6 +31,10 @@ class Ship {
     }
 
     public void draw(Batch batch){
-
+        batch.draw(shieldTexture, xPosition, yPosition, width, height);
+        //drawn second so its displayed above
+        if (shield > 0){
+            batch.draw(shieldTexture, xPosition, yPosition, width, height);
+        }
     }
 }
