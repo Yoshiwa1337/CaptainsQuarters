@@ -16,9 +16,9 @@ class Ship {
     //graphics
     TextureRegion shipTexture, shieldTexture;
 
-    public Ship(float movementSpeed, int shield,
-                float xCentre, float yCentre, //storing center on creation
+    public Ship(float xCentre, float yCentre, //storing center on creation
                 float width, float height,
+                float movementSpeed, int shield,
                 TextureRegion shipTexture, TextureRegion shieldTexture) {
         this.movementSpeed = movementSpeed;
         this.shield = shield;
@@ -31,7 +31,7 @@ class Ship {
     }
 
     public void draw(Batch batch){
-        batch.draw(shieldTexture, xPosition, yPosition, width, height);
+        batch.draw(shipTexture, xPosition, yPosition, width, height);
         //drawn second so its displayed above
         if (shield > 0){
             batch.draw(shieldTexture, xPosition, yPosition, width, height);

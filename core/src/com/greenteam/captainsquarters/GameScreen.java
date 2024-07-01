@@ -35,6 +35,8 @@ public class GameScreen implements Screen {
     private final int WORLD_HEIGHT = 128;
 
     //game objects
+    private Ship playerShip;
+    private Ship enemyShip;
 
     GameScreen() {
 
@@ -56,6 +58,24 @@ public class GameScreen implements Screen {
 
         backgroundMaxScrollingSpeed = (float)WORLD_HEIGHT / 4;
 
+        //initialise texture regions
+        playerShipTextureRegion = textureAtlas.findRegion("shipteam");
+        enemyShipTextureRegion = textureAtlas.findRegion("shipenemy");
+        playerShieldTextureRegion = textureAtlas.findRegion("shield2");
+        enemyShieldTextureRegion = textureAtlas.findRegion("shield1");
+        playerCannonTextureRegion = textureAtlas.findRegion("cannonBall");
+        enemyCannonTextureRegion = textureAtlas.findRegion("cannonBall");
+
+        //setting up game objects
+        playerShip = new Ship(WORLD_WIDTH/2, WORLD_HEIGHT/4,
+                10, 10,
+                2, 3,
+                playerShipTextureRegion, playerShieldTextureRegion);
+        enemyShip = new Ship(WORLD_WIDTH/2, WORLD_HEIGHT*3/4,
+                10, 10,
+                2, 1,
+                enemyShipTextureRegion, enemyShieldTextureRegion);
+
         batch = new SpriteBatch(); //collect individual changes to graphics and display
 
     }
@@ -69,7 +89,15 @@ public class GameScreen implements Screen {
         //Vertical scrolling background
         renderBackground(deltaTime);
 
+        //enemy ships
+        enemyShip.draw(batch);
 
+        //player ship
+        playerShip.draw(batch);
+
+        //cannons
+
+        //explosions
 
         //Horizontal scrolling
 //        backgroundOffset ++;
