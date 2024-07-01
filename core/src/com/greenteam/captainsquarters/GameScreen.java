@@ -20,11 +20,9 @@ public class GameScreen implements Screen {
     private SpriteBatch batch;
     private TextureAtlas textureAtlas;
 //    private Texture background;
-    private Texture[] backgrounds;
+    private TextureRegion[] backgrounds;
 
-//    private TextureRegion[] backgrounds;
-
-//    private TextureRegion playerShipTextureRegion, playerShieldTextureRegion, enemyShipTextureRegion, enemyShieldTextureRegion, playerCannonTextureRegion, enemyCannonTextureRegion;
+    private TextureRegion playerShipTextureRegion, playerShieldTextureRegion, enemyShipTextureRegion, enemyShieldTextureRegion, playerCannonTextureRegion, enemyCannonTextureRegion;
 
 
     //game timing
@@ -44,17 +42,17 @@ public class GameScreen implements Screen {
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
 
         //setting texture atlas
-//        textureAtlas = new TextureAtlas("images.atlas");
+        textureAtlas = new TextureAtlas("images.atlas");
 
         //setting up background
 
 //        background = textureAtlas.findRegion("Water-Top");
 //        backgroundOffset = 0;
-        backgrounds = new Texture[4];
-        backgrounds[0] = new Texture("Starscape00.png");
-        backgrounds[1] = new Texture("Starscape01.png");
-        backgrounds[2] = new Texture("Starscape02.png");
-        backgrounds[3] = new Texture("Starscape03.png");
+        backgrounds = new TextureRegion[4];
+        backgrounds[0] = textureAtlas.findRegion("Starscape00");
+        backgrounds[1] = textureAtlas.findRegion("Starscape01");
+        backgrounds[2] = textureAtlas.findRegion("Starscape02");
+        backgrounds[3] = textureAtlas.findRegion("Starscape03");
 
         backgroundMaxScrollingSpeed = (float)WORLD_HEIGHT / 4;
 
