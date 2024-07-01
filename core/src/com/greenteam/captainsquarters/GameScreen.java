@@ -43,16 +43,27 @@ public class GameScreen implements Screen {
     public void render(float deltaTime) {
         batch.begin();
 
-        //create scrolling background
+        //Vertical scrolling background
+//        backgroundOffset ++;
+//        if (backgroundOffset % WORLD_HEIGHT == 0){
+//            backgroundOffset = 0;
+//        }
+//
+//
+//        batch.draw(background, 0, -backgroundOffset,WORLD_WIDTH, WORLD_HEIGHT);
+//        //adds background at the top for repeating effect
+//        batch.draw(background, 0, -backgroundOffset+WORLD_HEIGHT,WORLD_WIDTH, WORLD_HEIGHT);
+
+        //Horizontal scrolling
         backgroundOffset ++;
-        if (backgroundOffset % WORLD_HEIGHT == 0){
+        if (backgroundOffset % WORLD_WIDTH == 0){
             backgroundOffset = 0;
         }
 
 
-        batch.draw(background, 0, -backgroundOffset,WORLD_WIDTH, WORLD_HEIGHT);
+        batch.draw(background, -backgroundOffset, 0,WORLD_WIDTH, WORLD_HEIGHT);
         //adds background at the top for repeating effect
-        batch.draw(background, 0, -backgroundOffset+WORLD_HEIGHT,WORLD_WIDTH, WORLD_HEIGHT);
+        batch.draw(background, -backgroundOffset+WORLD_WIDTH,0 ,WORLD_WIDTH, WORLD_HEIGHT);
 
 
         batch.end(); //finish and display
