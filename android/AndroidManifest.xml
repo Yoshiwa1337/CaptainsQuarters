@@ -27,9 +27,12 @@ xmlns:tools="http://schemas.android.com/tools">
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity android:name=".LandingMap"
-        android:exported="false">
-    </activity>
+    <activity
+        android:name=".LandingMap"
+        android:exported="false"></activity>
+    <activity
+        android:name=".Schematics"
+        android:exported="false"></activity>
 </application>
 
 

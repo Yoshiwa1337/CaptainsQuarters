@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     Button btn;
     Button btn2;
+    Button btn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn = findViewById(R.id.btn);
         btn2 = findViewById(R.id.btn2);
+        btn3 = findViewById(R.id.btn3);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, LandingMap.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Schematics.class);
                 MainActivity.this.startActivity(intent);
             }
         });
