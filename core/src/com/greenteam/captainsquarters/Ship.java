@@ -13,22 +13,42 @@ class Ship {
     float xPosition, yPosition; //lower-left corner default
     float width, height;
 
+    //cannon info
+    float cannonWidth, cannonHeight;
+    float cannonMovementSpeed;
+    float timeBetweenFire;
+    float timeSincePreviousFire = 0;
+
     //graphics
     TextureRegion shipTextureRegion, shieldTextureRegion, cannonTextureRegion;
 
     public Ship(float xCentre, float yCentre, //storing center on creation
                 float width, float height,
                 float movementSpeed, int shield,
-                TextureRegion shipTextureRegion, TextureRegion shieldTextureRegion) {
+                float cannonWidth, float cannonHeight, float cannonMovementSpeed,
+                float timeBetweenFire,
+                TextureRegion shipTextureRegion, TextureRegion shieldTextureRegion,
+                TextureRegion cannonTextureRegion) {
         this.movementSpeed = movementSpeed;
         this.shield = shield;
         this.xPosition = xCentre - width/2; //storing lowerleft corner
         this.yPosition = yCentre - height/2; //storing lowerleft corner
         this.width = width;
         this.height = height;
+        this.cannonWidth = cannonWidth;
+        this.cannonHeight = cannonHeight;
+        this.cannonMovementSpeed = cannonMovementSpeed;
+        this.timeBetweenFire = timeBetweenFire;
         this.shipTextureRegion = shipTextureRegion;
         this.shieldTextureRegion = shieldTextureRegion;
+        this.cannonTextureRegion = cannonTextureRegion;
     }
+
+    //updates ship
+    public void update(float deltaTime){
+        timeSincePreviousFire += deltaTime;
+    }
+
 
     public void draw(Batch batch){
         batch.draw(shipTextureRegion, xPosition, yPosition, width, height);
