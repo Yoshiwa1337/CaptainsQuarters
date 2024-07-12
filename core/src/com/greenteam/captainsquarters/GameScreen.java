@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.LinkedList;
+
 public class GameScreen implements Screen {
 
     //screen
@@ -37,6 +39,8 @@ public class GameScreen implements Screen {
     //game objects
     private Ship playerShip;
     private Ship enemyShip;
+    private LinkedList<Cannon> playerCannonList;
+    private LinkedList<Cannon> enemyCannonList;
 
     GameScreen() {
 
@@ -76,6 +80,9 @@ public class GameScreen implements Screen {
                 10, 10,
                 2, 1,
                 enemyShipTextureRegion, enemyShieldTextureRegion);
+
+        playerCannonList = new LinkedList<>();
+        enemyCannonList = new LinkedList<>();
 
         batch = new SpriteBatch(); //collect individual changes to graphics and display
 
