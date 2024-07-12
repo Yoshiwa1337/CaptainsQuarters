@@ -14,27 +14,27 @@ class Ship {
     float width, height;
 
     //graphics
-    TextureRegion shipTexture, shieldTexture;
+    TextureRegion shipTextureRegion, shieldTextureRegion, cannonTextureRegion;
 
     public Ship(float xCentre, float yCentre, //storing center on creation
                 float width, float height,
                 float movementSpeed, int shield,
-                TextureRegion shipTexture, TextureRegion shieldTexture) {
+                TextureRegion shipTextureRegion, TextureRegion shieldTextureRegion) {
         this.movementSpeed = movementSpeed;
         this.shield = shield;
         this.xPosition = xCentre - width/2; //storing lowerleft corner
         this.yPosition = yCentre - height/2; //storing lowerleft corner
         this.width = width;
         this.height = height;
-        this.shipTexture = shipTexture;
-        this.shieldTexture = shieldTexture;
+        this.shipTextureRegion = shipTextureRegion;
+        this.shieldTextureRegion = shieldTextureRegion;
     }
 
     public void draw(Batch batch){
-        batch.draw(shipTexture, xPosition, yPosition, width, height);
+        batch.draw(shipTextureRegion, xPosition, yPosition, width, height);
         //drawn second so its displayed above
         if (shield > 0){
-            batch.draw(shieldTexture, xPosition, yPosition, width, height);
+            batch.draw(shieldTextureRegion, xPosition, yPosition, width, height);
         }
     }
 }
