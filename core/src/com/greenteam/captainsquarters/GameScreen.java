@@ -44,14 +44,15 @@ public class GameScreen implements Screen {
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
 
         //setting texture atlas
-        textureAtlas = new TextureAtlas("images.atlas");
+        textureAtlas = new TextureAtlas("imagesthree.atlas");
 
         //setting up background
 
 //        background = textureAtlas.findRegion("Water-Top");
 //        backgroundOffset = 0;
         backgrounds = new TextureRegion[4];
-        backgrounds[0] = textureAtlas.findRegion("Starscape00");
+//        backgrounds[0] = textureAtlas.findRegion("Starscape00");
+        backgrounds[0] = textureAtlas.findRegion("ocean9");
         backgrounds[1] = textureAtlas.findRegion("Starscape01");
         backgrounds[2] = textureAtlas.findRegion("Starscape02");
         backgrounds[3] = textureAtlas.findRegion("Starscape03");
@@ -136,6 +137,14 @@ public class GameScreen implements Screen {
                     -backgroundOffsets[layer]+WORLD_HEIGHT,
                     WORLD_WIDTH, WORLD_HEIGHT);
 
+//            batch.draw(backgrounds[layer],
+//                    -backgroundOffsets[layer],
+//                    0,
+//                    WORLD_WIDTH, WORLD_HEIGHT);
+//            batch.draw(backgrounds[layer],
+//                    -backgroundOffsets[layer]+WORLD_WIDTH,
+//                    0,
+//                    WORLD_WIDTH, WORLD_HEIGHT);
 
         }
 
