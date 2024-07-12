@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class GameScreen implements Screen {
 
@@ -72,14 +73,18 @@ public class GameScreen implements Screen {
         enemyCannonTextureRegion = textureAtlas.findRegion("cannonBall");
 
         //setting up game objects
-        playerShip = new Ship(WORLD_WIDTH/2, WORLD_HEIGHT/4,
+        playerShip = new PlayerShip(WORLD_WIDTH/2, WORLD_HEIGHT/4,
                 10, 10,
                 2, 3,
-                playerShipTextureRegion, playerShieldTextureRegion);
-        enemyShip = new Ship(WORLD_WIDTH/2, WORLD_HEIGHT*3/4,
+                0.4f, 4,
+                45, 0.5f,
+                playerShipTextureRegion, playerShieldTextureRegion, playerCannonTextureRegion);
+        enemyShip = new EnemyShip(WORLD_WIDTH/2, WORLD_HEIGHT*3/4,
                 10, 10,
                 2, 1,
-                enemyShipTextureRegion, enemyShieldTextureRegion);
+                0.4f, 4,
+                50, 0.8f,
+                enemyShipTextureRegion, enemyShieldTextureRegion, enemyCannonTextureRegion);
 
         playerCannonList = new LinkedList<>();
         enemyCannonList = new LinkedList<>();
@@ -94,6 +99,9 @@ public class GameScreen implements Screen {
     public void render(float deltaTime) {
         batch.begin();
 
+        playerShip.update(deltaTime);
+        enemyShip.update(deltaTime);
+
         //Vertical scrolling background
         renderBackground(deltaTime);
 
@@ -104,6 +112,41 @@ public class GameScreen implements Screen {
         playerShip.draw(batch);
 
         //cannons
+        //making cannon balls
+        //player
+        if(playerShip.canFireCannon()){
+            Cannon[] cannons = playerShip.fireCannons();
+            for (Cannon cannon: cannons){
+                playerCannonList.add(cannon);
+            }
+        }
+        //enemy
+        if(enemyShip.canFireCannon()){
+            Cannon[] cannons = enemyShip.fireCannons();
+            for (Cannon cannon: cannons){
+                enemyCannonList.add(cannon);
+            }
+        }
+        //draw cannon balls
+        //deleting old cannon balls
+        ListIterator<Cannon> iterator = playerCannonList.listIterator();
+        while(iterator.hasNext()){ //moves through list one at a time
+            Cannon cannon = iterator.next();
+            cannon.draw(batch); //draws
+            cannon.yPosition += cannon.movementSpeed*deltaTime; //speed * time = distance --moves it
+            if(cannon.yPosition > WORLD_HEIGHT){
+                iterator.remove(); //removes last item retrieved from iterator
+            }
+        }
+        iterator = enemyCannonList.listIterator();
+        while(iterator.hasNext()){ //moves through list one at a time
+            Cannon cannon = iterator.next();
+            cannon.draw(batch); //draws
+            cannon.yPosition -= cannon.movementSpeed*deltaTime; //going down the screen
+            if(cannon.yPosition + cannon.height < 0){
+                iterator.remove(); //removes last item retrieved from iterator
+            }
+        }
 
         //explosions
 

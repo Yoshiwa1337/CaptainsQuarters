@@ -3,7 +3,7 @@ package com.greenteam.captainsquarters;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-class Ship {
+abstract class Ship {
 
     //characteristics
     float movementSpeed; //world units per second
@@ -48,6 +48,12 @@ class Ship {
     public void update(float deltaTime){
         timeSincePreviousFire += deltaTime;
     }
+
+    public boolean canFireCannon(){
+        return (timeSincePreviousFire - timeBetweenFire >= 0); //is the amount of time safe to fire
+    }
+
+    public abstract Cannon[] fireCannons();
 
 
     public void draw(Batch batch){
