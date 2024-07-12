@@ -33,6 +33,9 @@ xmlns:tools="http://schemas.android.com/tools">
     <activity
         android:name=".Schematics"
         android:exported="false"></activity>
+    <activity
+        android:name=".Tutorial"
+        android:exported="false"></activity>
 </application>
 
 
