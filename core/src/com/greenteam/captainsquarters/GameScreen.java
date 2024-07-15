@@ -113,6 +113,57 @@ public class GameScreen implements Screen {
         playerShip.draw(batch);
 
         //cannons
+        renderCannons(deltaTime);
+
+        //detect any collisions between the ships/cannons
+        detectCollisions();
+
+        //explosions
+        renderExplosions(deltaTime);
+
+        //Horizontal scrolling
+//        backgroundOffset ++;
+//        if (backgroundOffset % WORLD_WIDTH == 0){
+//            backgroundOffset = 0;
+//        }
+
+//        batch.draw(background, -backgroundOffset, 0,WORLD_WIDTH, WORLD_HEIGHT);
+//        //adds background at the top for repeating effect
+//        batch.draw(background, -backgroundOffset+WORLD_WIDTH,0 ,WORLD_WIDTH, WORLD_HEIGHT);
+
+
+        batch.end(); //finish and display
+
+    }
+
+    private void detectCollisions(){
+        //for each player cannon, check if it reaches an enemy ship
+        ListIterator<Cannon> iterator = playerCannonList.listIterator();
+        while(iterator.hasNext()){ //moves through list one at a time
+            Cannon cannon = iterator.next();
+            if(enemyShip.intersects(cannon.getBoundingBox())){
+                //makes contact
+                iterator.remove();
+            }
+        }
+
+        //for each enemy cannon, check if it reaches an player ship
+        iterator = enemyCannonList.listIterator();
+        while(iterator.hasNext()){ //moves through list one at a time
+            Cannon cannon = iterator.next();
+            if(playerShip.intersects(cannon.getBoundingBox())){
+                //makes contact
+                iterator.remove();
+            }
+        }
+
+    }
+
+    private void renderExplosions(float deltaTime){
+
+    }
+
+    private void renderCannons(float deltaTime){
         //making cannon balls
         //player
         if(playerShip.canFireCannon()){
@@ -148,22 +199,6 @@ public class GameScreen implements Screen {
                 iterator.remove(); //removes last item retrieved from iterator
             }
         }
-
-        //explosions
-
-        //Horizontal scrolling
-//        backgroundOffset ++;
-//        if (backgroundOffset % WORLD_WIDTH == 0){
-//            backgroundOffset = 0;
-//        }
-
-//        batch.draw(background, -backgroundOffset, 0,WORLD_WIDTH, WORLD_HEIGHT);
-//        //adds background at the top for repeating effect
-//        batch.draw(background, -backgroundOffset+WORLD_WIDTH,0 ,WORLD_WIDTH, WORLD_HEIGHT);
-
-
-        batch.end(); //finish and display
-
     }
 
     private void renderBackground(float deltaTime) {

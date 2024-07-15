@@ -2,6 +2,7 @@ package com.greenteam.captainsquarters;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 
 abstract class Ship {
 
@@ -54,6 +55,11 @@ abstract class Ship {
     }
 
     public abstract Cannon[] fireCannons();
+
+    public boolean intersects(Rectangle otherRectangle){
+        Rectangle thisRectangle = new Rectangle(xPosition, yPosition, width, height);
+        return thisRectangle.overlaps(otherRectangle);
+    }
 
 
     public void draw(Batch batch){
