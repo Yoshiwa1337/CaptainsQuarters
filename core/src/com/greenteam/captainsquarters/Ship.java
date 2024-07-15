@@ -60,7 +60,7 @@ abstract class Ship {
         batch.draw(shipTextureRegion, xPosition, yPosition, width, height);
         //drawn second so its displayed above
         if (shield > 0){
-            batch.draw(shieldTextureRegion, xPosition, yPosition, width, height);
+            batch.draw(shieldTextureRegion, xPosition, yPosition+0.5f, width, height);
         }
     }
 }

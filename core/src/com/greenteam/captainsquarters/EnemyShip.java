@@ -1,5 +1,6 @@
 package com.greenteam.captainsquarters;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 class EnemyShip extends Ship {
@@ -23,5 +24,13 @@ class EnemyShip extends Ship {
         timeSincePreviousFire = 0;
 
         return Cannon;
+    }
+    @Override
+    public void draw(Batch batch){
+        batch.draw(shipTextureRegion, xPosition, yPosition, width, height);
+        //drawn second so its displayed above
+        if (shield > 0){
+            batch.draw(shieldTextureRegion, xPosition, yPosition-0.8f, width, height);
+        }
     }
 }

@@ -69,6 +69,7 @@ public class GameScreen implements Screen {
         enemyShipTextureRegion = textureAtlas.findRegion("shipenemy");
         playerShieldTextureRegion = textureAtlas.findRegion("shield2");
         enemyShieldTextureRegion = textureAtlas.findRegion("shield1");
+        enemyShieldTextureRegion.flip(false, true);
         playerCannonTextureRegion = textureAtlas.findRegion("cannonBall");
         enemyCannonTextureRegion = textureAtlas.findRegion("cannonBall");
 
