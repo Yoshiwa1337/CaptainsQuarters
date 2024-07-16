@@ -36,6 +36,9 @@ xmlns:tools="http://schemas.android.com/tools">
     <activity
         android:name=".Tutorial"
         android:exported="false"></activity>
+    <activity
+        android:name=".Decryption"
+        android:exported="false"></activity>
 </application>
 
 
