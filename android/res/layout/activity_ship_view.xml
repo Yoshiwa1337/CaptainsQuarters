@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_img"
+    tools:context=".Ship_View">
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="68dp"
+        android:background="@drawable/rounded_corner"
+        android:text="4"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="412dp"
+        android:background="@drawable/rounded_corner"
+        android:text="3"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/rounded_corner"
+        android:text="2"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/heading_font"
+        android:text="Ship View"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/shipImg"
+        android:layout_width="304dp"
+        android:layout_height="390dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/temp_ship" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="312dp"
+        android:background="@drawable/rounded_corner"
+        android:text="1"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
