@@ -155,7 +155,7 @@ public class Ship_View extends AppCompatActivity {
 
         LayoutInflater inflater = getLayoutInflater();
         View v =inflater.inflate(R.layout.back_btn,null);
-        Button backBtn = v.findViewById(R.id.back_btn);
+        ImageView backBtn = v.findViewById(R.id.back_btn);
         ConstraintLayout shipLayout = (ConstraintLayout)findViewById(R.id.btnContainer);
         shipLayout.addView(v);
 
