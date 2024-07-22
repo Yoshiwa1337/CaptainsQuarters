@@ -1,6 +1,7 @@
 package com.greenteam.captainsquarters;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -158,6 +159,16 @@ public class Ship_View extends AppCompatActivity {
         ImageView backBtn = v.findViewById(R.id.back_btn);
         ConstraintLayout shipLayout = (ConstraintLayout)findViewById(R.id.btnContainer);
         shipLayout.addView(v);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
 

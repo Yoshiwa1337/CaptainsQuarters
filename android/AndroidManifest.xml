@@ -24,7 +24,9 @@ xmlns:tools="http://schemas.android.com/tools">
     </activity>
     <activity
         android:name=".Score_History"
-        android:exported="false"></activity>
+        android:exported="false">
+
+    </activity>
     <activity
         android:name=".Ship_View"
         android:exported="true">
