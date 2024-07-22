@@ -2,6 +2,7 @@ package com.greenteam.captainsquarters;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class Ship_View extends AppCompatActivity {
 
@@ -85,7 +87,6 @@ public class Ship_View extends AppCompatActivity {
 
         shipImg.startAnimation(fade[0]);
         area1.startAnimation(fade[1]);
-        fade[1].setDuration(2000);
         area2.startAnimation(fade[2]);
         area3.startAnimation(fade[3]);
         area4.startAnimation(fade[4]);
@@ -150,6 +151,14 @@ public class Ship_View extends AppCompatActivity {
                 dialog4.show();
             }
         });
+
+
+        LayoutInflater inflater = getLayoutInflater();
+        View v =inflater.inflate(R.layout.back_btn,null);
+        Button backBtn = v.findViewById(R.id.back_btn);
+        ConstraintLayout shipLayout = (ConstraintLayout)findViewById(R.id.btnContainer);
+        shipLayout.addView(v);
+
 
 
     }
