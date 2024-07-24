@@ -13,6 +13,7 @@ abstract class Ship {
     //dimensions and positioning
     float xPosition, yPosition; //lower-left corner default
     float width, height;
+    Rectangle boundingBox;
 
     //cannon info
     float cannonWidth, cannonHeight;
@@ -36,6 +37,7 @@ abstract class Ship {
         this.yPosition = yCentre - height/2; //storing lowerleft corner
         this.width = width;
         this.height = height;
+        this.boundingBox = new Rectangle(xPosition, yPosition, width, height);
         this.cannonWidth = cannonWidth;
         this.cannonHeight = cannonHeight;
         this.cannonMovementSpeed = cannonMovementSpeed;
@@ -47,6 +49,7 @@ abstract class Ship {
 
     //updates ship
     public void update(float deltaTime){
+        boundingBox.set(xPosition, yPosition, width, height);
         timeSincePreviousFire += deltaTime;
     }
 
@@ -57,8 +60,7 @@ abstract class Ship {
     public abstract Cannon[] fireCannons();
 
     public boolean intersects(Rectangle otherRectangle){
-        Rectangle thisRectangle = new Rectangle(xPosition, yPosition, width, height);
-        return thisRectangle.overlaps(otherRectangle);
+        return boundingBox.overlaps(otherRectangle);
     }
 
     public void hit(Cannon cannon){
