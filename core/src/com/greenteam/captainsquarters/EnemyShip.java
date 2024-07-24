@@ -18,7 +18,7 @@ class EnemyShip extends Ship {
     @Override
     public Cannon[] fireCannons() {
         Cannon[] Cannon = new Cannon[1];
-        Cannon[0] = new Cannon(cannonTextureRegion, cannonMovementSpeed, cannonHeight, cannonWidth, yPosition+height*0.0f, xPosition+width*0.5f);
+        Cannon[0] = new Cannon(cannonTextureRegion, cannonMovementSpeed, cannonHeight, cannonWidth, boundingBox.y+boundingBox.height*0.0f, boundingBox.x+boundingBox.width*0.5f);
 //        Cannon[1] = new Cannon(cannonTextureRegion, cannonMovementSpeed, cannonHeight, cannonWidth, yPosition+height, xPosition+width*0.5f);
 
         timeSincePreviousFire = 0;
@@ -27,10 +27,10 @@ class EnemyShip extends Ship {
     }
     @Override
     public void draw(Batch batch){
-        batch.draw(shipTextureRegion, xPosition, yPosition, width, height);
+        batch.draw(shipTextureRegion, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
         //drawn second so its displayed above
         if (shield > 0){
-            batch.draw(shieldTextureRegion, xPosition, yPosition-0.8f, width, height);
+            batch.draw(shieldTextureRegion, boundingBox.x, boundingBox.y-0.8f, boundingBox.width, boundingBox.height);
         }
     }
 }

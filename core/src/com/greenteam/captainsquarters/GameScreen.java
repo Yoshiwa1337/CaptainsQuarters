@@ -141,7 +141,7 @@ public class GameScreen implements Screen {
         ListIterator<Cannon> iterator = playerCannonList.listIterator();
         while(iterator.hasNext()){ //moves through list one at a time
             Cannon cannon = iterator.next();
-            if(enemyShip.intersects(cannon.getBoundingBox())){
+            if(enemyShip.intersects(cannon.boundingBox)){
                 //makes contact with enemy
                 enemyShip.hit(cannon);
                 iterator.remove();
@@ -152,7 +152,7 @@ public class GameScreen implements Screen {
         iterator = enemyCannonList.listIterator();
         while(iterator.hasNext()){ //moves through list one at a time
             Cannon cannon = iterator.next();
-            if(playerShip.intersects(cannon.getBoundingBox())){
+            if(playerShip.intersects(cannon.boundingBox)){
                 //makes contact with player
                 playerShip.hit(cannon);
                 iterator.remove();
@@ -187,8 +187,8 @@ public class GameScreen implements Screen {
         while(iterator.hasNext()){ //moves through list one at a time
             Cannon cannon = iterator.next();
             cannon.draw(batch); //draws
-            cannon.yPosition += cannon.movementSpeed*deltaTime; //speed * time = distance --moves it
-            if(cannon.yPosition > WORLD_HEIGHT){
+            cannon.boundingBox.y += cannon.movementSpeed*deltaTime; //speed * time = distance --moves it
+            if(cannon.boundingBox.y > WORLD_HEIGHT){
                 iterator.remove(); //removes last item retrieved from iterator
             }
         }
@@ -196,8 +196,8 @@ public class GameScreen implements Screen {
         while(iterator.hasNext()){ //moves through list one at a time
             Cannon cannon = iterator.next();
             cannon.draw(batch); //draws
-            cannon.yPosition -= cannon.movementSpeed*deltaTime; //going down the screen
-            if(cannon.yPosition + cannon.height < 0){
+            cannon.boundingBox.y -= cannon.movementSpeed*deltaTime; //going down the screen
+            if(cannon.boundingBox.y + cannon.boundingBox.height < 0){
                 iterator.remove(); //removes last item retrieved from iterator
             }
         }

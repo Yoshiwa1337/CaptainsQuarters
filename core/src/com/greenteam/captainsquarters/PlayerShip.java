@@ -17,7 +17,7 @@ class PlayerShip extends Ship{
     @Override
     public Cannon[] fireCannons() {
         Cannon[] Cannon = new Cannon[1];
-        Cannon[0] = new Cannon(cannonTextureRegion, cannonMovementSpeed, cannonHeight, cannonWidth, yPosition+height, xPosition+width*0.5f);
+        Cannon[0] = new Cannon(cannonTextureRegion, cannonMovementSpeed, cannonHeight, cannonWidth, boundingBox.y+boundingBox.height, boundingBox.x+boundingBox.width*0.5f);
 //        Cannon[1] = new Cannon(cannonTextureRegion, cannonMovementSpeed, cannonHeight, cannonWidth, yPosition+height, xPosition+width*0.5f);
 
         timeSincePreviousFire = 0;
