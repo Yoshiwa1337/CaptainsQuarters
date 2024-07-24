@@ -61,6 +61,12 @@ abstract class Ship {
         return thisRectangle.overlaps(otherRectangle);
     }
 
+    public void hit(Cannon cannon){
+        if(shield > 0){
+            shield --;
+        }
+    }
+
 
     public void draw(Batch batch){
         batch.draw(shipTextureRegion, xPosition, yPosition, width, height);

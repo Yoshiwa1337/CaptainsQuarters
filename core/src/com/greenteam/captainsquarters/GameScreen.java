@@ -142,7 +142,8 @@ public class GameScreen implements Screen {
         while(iterator.hasNext()){ //moves through list one at a time
             Cannon cannon = iterator.next();
             if(enemyShip.intersects(cannon.getBoundingBox())){
-                //makes contact
+                //makes contact with enemy
+                enemyShip.hit(cannon);
                 iterator.remove();
             }
         }
@@ -152,7 +153,8 @@ public class GameScreen implements Screen {
         while(iterator.hasNext()){ //moves through list one at a time
             Cannon cannon = iterator.next();
             if(playerShip.intersects(cannon.getBoundingBox())){
-                //makes contact
+                //makes contact with player
+                playerShip.hit(cannon);
                 iterator.remove();
             }
         }
