@@ -1,5 +1,7 @@
 package com.greenteam.captainsquarters;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -76,7 +78,7 @@ public class GameScreen implements Screen {
         //setting up game objects
         playerShip = new PlayerShip(WORLD_WIDTH/2, WORLD_HEIGHT/4,
                 10, 10,
-                2, 3,
+                48, 3,
                 0.4f, 4,
                 45, 0.5f,
                 playerShipTextureRegion, playerShieldTextureRegion, playerCannonTextureRegion);
@@ -99,6 +101,9 @@ public class GameScreen implements Screen {
     @Override
     public void render(float deltaTime) {
         batch.begin();
+
+        detectInput(deltaTime);
+
 
         playerShip.update(deltaTime);
         enemyShip.update(deltaTime);
@@ -134,6 +139,39 @@ public class GameScreen implements Screen {
 
         batch.end(); //finish and display
 
+    }
+
+    private void detectInput(float deltaTime){
+        //keyboard input
+
+        //figure out max distance ship can move
+        //check each relevant key and move accordingly
+
+        float leftLimit, rightLimit, upperLimit, lowerLimit;
+        leftLimit = -playerShip.boundingBox.x;
+        lowerLimit = -playerShip.boundingBox.y;
+        rightLimit = WORLD_WIDTH - playerShip.boundingBox.x - playerShip.boundingBox.width;
+        upperLimit = WORLD_HEIGHT / 2 - playerShip.boundingBox.y - playerShip.boundingBox.height;
+
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && rightLimit > 0){
+//            float xChange = playerShip.movementSpeed*deltaTime;
+//            xChange = Math.min(xChange, rightLimit);
+//            playerShip.translate(xChange, 0f);
+            playerShip.translate(Math.min(playerShip.movementSpeed*deltaTime, rightLimit), 0f);
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.UP) && upperLimit > 0){
+            playerShip.translate(0f, Math.min(playerShip.movementSpeed*deltaTime, upperLimit));
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && leftLimit < 0){
+            playerShip.translate(Math.max(-playerShip.movementSpeed*deltaTime, leftLimit), 0f);
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN) && lowerLimit < 0){
+            playerShip.translate(0f, Math.max(-playerShip.movementSpeed*deltaTime, leftLimit));
+        }
+        //touch input (applies for mouse)
     }
 
     private void detectCollisions(){
