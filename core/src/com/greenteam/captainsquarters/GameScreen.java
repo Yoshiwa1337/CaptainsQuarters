@@ -1,11 +1,9 @@
 package com.greenteam.captainsquarters;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -35,6 +33,8 @@ public class GameScreen implements Screen {
 //    private int backgroundOffset; //background move
     private float[] backgroundOffsets = {0, 0, 0, 0};
     private float backgroundMaxScrollingSpeed;
+    private float timeBetweenEnemySpawns = 3f;
+    private float enemySpawnTimer = 0;
 
     //parameters for world
     private final int WORLD_WIDTH = 72;
@@ -43,7 +43,7 @@ public class GameScreen implements Screen {
 
     //game objects
     private PlayerShip playerShip;
-    private EnemyShip enemyShip;
+    private LinkedList<EnemyShip> enemyShipList;
     private LinkedList<Cannon> playerCannonList;
     private LinkedList<Cannon> enemyCannonList;
 
@@ -84,13 +84,8 @@ public class GameScreen implements Screen {
                 0.4f, 4,
                 45, 0.5f,
                 playerShipTextureRegion, playerShieldTextureRegion, playerCannonTextureRegion);
-        enemyShip = new EnemyShip(PirateInvaders.random.nextFloat()*(WORLD_WIDTH-10)+5,
-                WORLD_HEIGHT - 5,
-                10, 10,
-                47, 1,
-                0.4f, 4,
-                50, 0.8f,
-                enemyShipTextureRegion, enemyShieldTextureRegion, enemyCannonTextureRegion);
+        enemyShipList = new LinkedList<>();
+
 
         playerCannonList = new LinkedList<>();
         enemyCannonList = new LinkedList<>();
@@ -105,18 +100,22 @@ public class GameScreen implements Screen {
     public void render(float deltaTime) {
         batch.begin();
 
-        detectInput(deltaTime);
-        moveEnemies(deltaTime);
-
-
-        playerShip.update(deltaTime);
-        enemyShip.update(deltaTime);
-
         //Vertical scrolling background
         renderBackground(deltaTime);
 
-        //enemy ships
-        enemyShip.draw(batch);
+        detectInput(deltaTime);
+        playerShip.update(deltaTime);
+
+        spawnEnemyShips(deltaTime);
+
+        ListIterator<EnemyShip> enemyShipListIterator = enemyShipList.listIterator();
+        while(enemyShipListIterator.hasNext()){
+            EnemyShip enemyShip = enemyShipListIterator.next();
+            moveEnemy(enemyShip, deltaTime);
+            enemyShip.update(deltaTime);
+            //enemy ships
+            enemyShip.draw(batch);
+        }
 
         //player ship
         playerShip.draw(batch);
@@ -142,6 +141,21 @@ public class GameScreen implements Screen {
 
 
         batch.end(); //finish and display
+
+    }
+
+    private void spawnEnemyShips(float deltaTime){
+        enemySpawnTimer += deltaTime;
+        if(enemySpawnTimer > timeBetweenEnemySpawns){
+            enemyShipList.add(new EnemyShip(PirateInvaders.random.nextFloat()*(WORLD_WIDTH-10)+5,
+                    WORLD_HEIGHT - 5,
+                    10, 10,
+                    47, 1,
+                    0.4f, 4,
+                    50, 0.8f,
+                    enemyShipTextureRegion, enemyShieldTextureRegion, enemyCannonTextureRegion));
+            enemySpawnTimer -= timeBetweenEnemySpawns;
+        }
 
     }
 
@@ -220,7 +234,7 @@ public class GameScreen implements Screen {
 
     }
 
-    private void moveEnemies(float deltaTime){
+    private void moveEnemy(EnemyShip enemyShip, float deltaTime){
         //figure out max distance ship can move
 
         float leftLimit, rightLimit, upperLimit, lowerLimit;
@@ -243,24 +257,29 @@ public class GameScreen implements Screen {
 
     private void detectCollisions(){
         //for each player cannon, check if it reaches an enemy ship
-        ListIterator<Cannon> iterator = playerCannonList.listIterator();
-        while(iterator.hasNext()){ //moves through list one at a time
-            Cannon cannon = iterator.next();
-            if(enemyShip.intersects(cannon.boundingBox)){
-                //makes contact with enemy
-                enemyShip.hit(cannon);
-                iterator.remove();
+        ListIterator<Cannon> CannonListIterator = playerCannonList.listIterator();
+        while(CannonListIterator.hasNext()){ //moves through list one at a time
+            Cannon cannon = CannonListIterator.next();
+            ListIterator<EnemyShip> enemyShipListIterator = enemyShipList.listIterator();
+            while(enemyShipListIterator.hasNext()){
+                EnemyShip enemyShip = enemyShipListIterator.next();
+
+                if(enemyShip.intersects(cannon.boundingBox)){
+                    //makes contact with enemy
+                    enemyShip.hit(cannon);
+                    CannonListIterator.remove();
+                }
             }
         }
 
         //for each enemy cannon, check if it reaches an player ship
-        iterator = enemyCannonList.listIterator();
-        while(iterator.hasNext()){ //moves through list one at a time
-            Cannon cannon = iterator.next();
+        CannonListIterator = enemyCannonList.listIterator();
+        while(CannonListIterator.hasNext()){ //moves through list one at a time
+            Cannon cannon = CannonListIterator.next();
             if(playerShip.intersects(cannon.boundingBox)){
                 //makes contact with player
                 playerShip.hit(cannon);
-                iterator.remove();
+                CannonListIterator.remove();
             }
         }
 
@@ -280,10 +299,14 @@ public class GameScreen implements Screen {
             }
         }
         //enemy
-        if(enemyShip.canFireCannon()){
-            Cannon[] cannons = enemyShip.fireCannons();
-            for (Cannon cannon: cannons){
-                enemyCannonList.add(cannon);
+        ListIterator<EnemyShip> enemyShipListIterator = enemyShipList.listIterator();
+        while(enemyShipListIterator.hasNext()){
+            EnemyShip enemyShip = enemyShipListIterator.next();
+            if(enemyShip.canFireCannon()){
+                Cannon[] cannons = enemyShip.fireCannons();
+                for (Cannon cannon: cannons){
+                    enemyCannonList.add(cannon);
+                }
             }
         }
         //draw cannon balls
