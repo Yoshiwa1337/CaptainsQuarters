@@ -42,8 +42,8 @@ public class GameScreen implements Screen {
     private final float TOUCH_MOVEMENT_THRESHOLD = 0.5f;
 
     //game objects
-    private Ship playerShip;
-    private Ship enemyShip;
+    private PlayerShip playerShip;
+    private EnemyShip enemyShip;
     private LinkedList<Cannon> playerCannonList;
     private LinkedList<Cannon> enemyCannonList;
 
@@ -84,9 +84,10 @@ public class GameScreen implements Screen {
                 0.4f, 4,
                 45, 0.5f,
                 playerShipTextureRegion, playerShieldTextureRegion, playerCannonTextureRegion);
-        enemyShip = new EnemyShip(WORLD_WIDTH/2, WORLD_HEIGHT*3/4,
+        enemyShip = new EnemyShip(PirateInvaders.random.nextFloat()*(WORLD_WIDTH-10)+5,
+                WORLD_HEIGHT - 5,
                 10, 10,
-                2, 1,
+                47, 1,
                 0.4f, 4,
                 50, 0.8f,
                 enemyShipTextureRegion, enemyShieldTextureRegion, enemyCannonTextureRegion);
@@ -105,6 +106,7 @@ public class GameScreen implements Screen {
         batch.begin();
 
         detectInput(deltaTime);
+        moveEnemies(deltaTime);
 
 
         playerShip.update(deltaTime);
@@ -153,7 +155,7 @@ public class GameScreen implements Screen {
         leftLimit = -playerShip.boundingBox.x;
         lowerLimit = -playerShip.boundingBox.y;
         rightLimit = WORLD_WIDTH - playerShip.boundingBox.x - playerShip.boundingBox.width;
-        upperLimit = WORLD_HEIGHT / 2 - playerShip.boundingBox.y - playerShip.boundingBox.height;
+        upperLimit = (float)WORLD_HEIGHT / 2 - playerShip.boundingBox.y - playerShip.boundingBox.height;
 
 //        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && rightLimit > 0){
 ////            float xChange = playerShip.movementSpeed*deltaTime;
@@ -216,6 +218,27 @@ public class GameScreen implements Screen {
         }
 
 
+    }
+
+    private void moveEnemies(float deltaTime){
+        //figure out max distance ship can move
+
+        float leftLimit, rightLimit, upperLimit, lowerLimit;
+        leftLimit = -enemyShip.boundingBox.x;
+        lowerLimit = (float)WORLD_HEIGHT / 2 -enemyShip.boundingBox.y;
+        rightLimit = WORLD_WIDTH - enemyShip.boundingBox.x - enemyShip.boundingBox.width;
+        upperLimit = WORLD_HEIGHT - enemyShip.boundingBox.y - enemyShip.boundingBox.height;
+
+        float xMove = enemyShip.getDirectionVector().x * enemyShip.movementSpeed * deltaTime;
+        float yMove = enemyShip.getDirectionVector().y * enemyShip.movementSpeed * deltaTime;
+
+        if(xMove > 0) xMove = Math.min(xMove, rightLimit);
+        else xMove = Math.max(xMove, leftLimit);
+
+        if(yMove > 0) yMove = Math.min(yMove, upperLimit);
+        else yMove = Math.max(yMove, lowerLimit);
+
+        enemyShip.translate(xMove, yMove);
     }
 
     private void detectCollisions(){
