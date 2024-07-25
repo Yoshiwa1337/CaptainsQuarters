@@ -155,24 +155,24 @@ public class GameScreen implements Screen {
         rightLimit = WORLD_WIDTH - playerShip.boundingBox.x - playerShip.boundingBox.width;
         upperLimit = WORLD_HEIGHT / 2 - playerShip.boundingBox.y - playerShip.boundingBox.height;
 
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && rightLimit > 0){
-//            float xChange = playerShip.movementSpeed*deltaTime;
-//            xChange = Math.min(xChange, rightLimit);
-//            playerShip.translate(xChange, 0f);
-            playerShip.translate(Math.min(playerShip.movementSpeed*deltaTime, rightLimit), 0f);
-        }
-
-        if(Gdx.input.isKeyPressed(Input.Keys.UP) && upperLimit > 0){
-            playerShip.translate(0f, Math.min(playerShip.movementSpeed*deltaTime, upperLimit));
-        }
-
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && leftLimit < 0){
-            playerShip.translate(Math.max(-playerShip.movementSpeed*deltaTime, leftLimit), 0f);
-        }
-
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN) && lowerLimit < 0){
-            playerShip.translate(0f, Math.max(-playerShip.movementSpeed*deltaTime, leftLimit));
-        }
+//        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && rightLimit > 0){
+////            float xChange = playerShip.movementSpeed*deltaTime;
+////            xChange = Math.min(xChange, rightLimit);
+////            playerShip.translate(xChange, 0f);
+//            playerShip.translate(Math.min(playerShip.movementSpeed*deltaTime, rightLimit), 0f);
+//        }
+//
+//        if(Gdx.input.isKeyPressed(Input.Keys.UP) && upperLimit > 0){
+//            playerShip.translate(0f, Math.min(playerShip.movementSpeed*deltaTime, upperLimit));
+//        }
+//
+//        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && leftLimit < 0){
+//            playerShip.translate(Math.max(-playerShip.movementSpeed*deltaTime, leftLimit), 0f);
+//        }
+//
+//        if(Gdx.input.isKeyPressed(Input.Keys.DOWN) && lowerLimit < 0){
+//            playerShip.translate(0f, Math.max(-playerShip.movementSpeed*deltaTime, leftLimit));
+//        }
         //touch input (applies for mouse)
         if(Gdx.input.isTouched()){
             //get screen position of touched location
