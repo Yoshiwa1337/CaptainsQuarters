@@ -185,8 +185,8 @@ public class GameScreen implements Screen {
 
             //calculate x/y difference
             Vector2 playerShipCentre = new Vector2(
-                    playerShip.boundingBox.x + playerShip.boundingBox.width,
-                    playerShip.boundingBox.y + playerShip.boundingBox.height);
+                    playerShip.boundingBox.x + playerShip.boundingBox.width/2,
+                    playerShip.boundingBox.y + playerShip.boundingBox.height/2);
 
             float touchDistance = touchPoint.dst(playerShipCentre);
 
