@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ListIterator;
 
 public class GameScreen implements Screen {
@@ -300,6 +301,16 @@ public class GameScreen implements Screen {
     }
 
     private void renderExplosions(float deltaTime){
+        ListIterator<Explosion> explosionListIterator = explosionList.listIterator();
+        while(explosionListIterator.hasNext()){
+            Explosion explosion = explosionListIterator.next();
+            if(explosion.isFinished()){
+                explosionListIterator.remove();
+            }
+            else{
+                explosion.draw(batch);
+            }
+        }
 
     }
 
