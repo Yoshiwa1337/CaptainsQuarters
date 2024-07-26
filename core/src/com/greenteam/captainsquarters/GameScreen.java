@@ -57,7 +57,7 @@ public class GameScreen implements Screen {
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
 
         //setting texture atlas
-        textureAtlas = new TextureAtlas("imagesfour.atlas");
+        textureAtlas = new TextureAtlas("imagefiles.atlas");
 
         //setting up background
 
