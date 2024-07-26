@@ -62,10 +62,12 @@ abstract class Ship {
         return boundingBox.overlaps(otherRectangle);
     }
 
-    public void hit(Cannon cannon){
+    public boolean hitAndCheckDestroyed(Cannon cannon){
         if(shield > 0){
             shield --;
+            return false;
         }
+        return true;
     }
 
     public void translate(float xChange, float yChange){

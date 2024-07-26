@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -13,7 +12,6 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 
 public class GameScreen implements Screen {
@@ -281,7 +279,7 @@ public class GameScreen implements Screen {
 
                 if(enemyShip.intersects(cannon.boundingBox)){
                     //makes contact with enemy
-                    enemyShip.hit(cannon);
+                    enemyShip.hitAndCheckDestroyed(cannon);
                     CannonListIterator.remove();
                 }
             }
@@ -293,7 +291,7 @@ public class GameScreen implements Screen {
             Cannon cannon = CannonListIterator.next();
             if(playerShip.intersects(cannon.boundingBox)){
                 //makes contact with player
-                playerShip.hit(cannon);
+                playerShip.hitAndCheckDestroyed(cannon);
                 CannonListIterator.remove();
             }
         }
