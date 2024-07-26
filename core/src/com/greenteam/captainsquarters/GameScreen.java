@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -23,6 +24,8 @@ public class GameScreen implements Screen {
     //graphics
     private SpriteBatch batch;
     private TextureAtlas textureAtlas;
+//    private Texture[] explosionTextures;
+    private TextureRegion[] explosionTextures;
 //    private Texture background;
     private TextureRegion[] backgrounds;
 
@@ -46,6 +49,7 @@ public class GameScreen implements Screen {
     private LinkedList<EnemyShip> enemyShipList;
     private LinkedList<Cannon> playerCannonList;
     private LinkedList<Cannon> enemyCannonList;
+    private LinkedList<Explosion> explosionList;
 
     GameScreen() {
 
@@ -76,6 +80,16 @@ public class GameScreen implements Screen {
         enemyShieldTextureRegion.flip(false, true);
         playerCannonTextureRegion = textureAtlas.findRegion("cannonBall");
         enemyCannonTextureRegion = textureAtlas.findRegion("cannonBall");
+
+//        explosionTextures = new Texture[3];
+//        explosionTextures[0] = new Texture("explosion3.png");
+//        explosionTextures[1] = new Texture("explosion2.png");
+//        explosionTextures[2] = new Texture("explosion1.png");
+
+        explosionTextures = new TextureRegion[3];
+        explosionTextures[0] = textureAtlas.findRegion("explosion3");
+        explosionTextures[1] = textureAtlas.findRegion("explosion2");
+        explosionTextures[2] = textureAtlas.findRegion("explosion1");
 
         //setting up game objects
         playerShip = new PlayerShip(WORLD_WIDTH/2, WORLD_HEIGHT/4,
