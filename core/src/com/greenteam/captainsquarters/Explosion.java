@@ -13,7 +13,7 @@ class Explosion {
 
     private Rectangle boundingBox;
 
-    Explosion(TextureRegion texture, Rectangle boundingBox, float totalAnimationTime){
+    Explosion(TextureRegion[] texture, Rectangle boundingBox, float totalAnimationTime){
         this.boundingBox = boundingBox;
 
         //texture splitting

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -56,7 +57,7 @@ public class GameScreen implements Screen {
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
 
         //setting texture atlas
-        textureAtlas = new TextureAtlas("imagesthree.atlas");
+        textureAtlas = new TextureAtlas("imagesfour.atlas");
 
         //setting up background
 
@@ -102,6 +103,8 @@ public class GameScreen implements Screen {
 
         playerCannonList = new LinkedList<>();
         enemyCannonList = new LinkedList<>();
+
+        explosionList = new LinkedList<>();
 
         batch = new SpriteBatch(); //collect individual changes to graphics and display
 
@@ -279,8 +282,12 @@ public class GameScreen implements Screen {
 
                 if(enemyShip.intersects(cannon.boundingBox)){
                     //makes contact with enemy
-                    enemyShip.hitAndCheckDestroyed(cannon);
+                    if(enemyShip.hitAndCheckDestroyed(cannon)){
+                        enemyShipListIterator.remove();
+                        explosionList.add(new Explosion(explosionTextures, new Rectangle(enemyShip.boundingBox), 0.7f));
+                    }
                     CannonListIterator.remove();
+                    break;
                 }
             }
         }
