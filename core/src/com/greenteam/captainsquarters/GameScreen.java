@@ -143,7 +143,7 @@ public class GameScreen implements Screen {
         detectCollisions();
 
         //explosions
-        renderExplosions(deltaTime);
+        updateAndRenderExplosions(deltaTime);
 
         //Horizontal scrolling
 //        backgroundOffset ++;
@@ -305,10 +305,11 @@ public class GameScreen implements Screen {
 
     }
 
-    private void renderExplosions(float deltaTime){
+    private void updateAndRenderExplosions(float deltaTime){
         ListIterator<Explosion> explosionListIterator = explosionList.listIterator();
         while(explosionListIterator.hasNext()){
             Explosion explosion = explosionListIterator.next();
+            explosion.update(deltaTime);
             if(explosion.isFinished()){
                 explosionListIterator.remove();
             }
