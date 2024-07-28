@@ -336,6 +336,7 @@ public class GameScreen implements Screen {
                     if(enemyShip.hitAndCheckDestroyed(cannon)){
                         enemyShipListIterator.remove();
                         explosionList.add(new Explosion(explosionTextures, new Rectangle(enemyShip.boundingBox), 0.7f));
+                        score += 100;
                     }
                     CannonListIterator.remove();
                     break;
@@ -352,6 +353,7 @@ public class GameScreen implements Screen {
                 if(playerShip.hitAndCheckDestroyed(cannon)){
                     explosionList.add(new Explosion(explosionTextures, new Rectangle(playerShip.boundingBox), 1.6f));
                     playerShip.shield = 10; //FOR TESTING, REMOVE THIS WHEN ADDING PLAYER DEATHS
+                    playerShip.lives --;
                 }
                 CannonListIterator.remove();
             }
