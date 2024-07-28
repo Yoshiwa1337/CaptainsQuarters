@@ -20,7 +20,7 @@ import java.util.List;
 
 public class Home_Page extends AppCompatActivity {
 
-    TextView[] pages;
+    TextView[] textViews;
     Animation fade;
 
     @Override
@@ -39,7 +39,7 @@ public class Home_Page extends AppCompatActivity {
 //            };
 //        });
 //
-        pages = new TextView[]{
+        textViews = new TextView[]{
                 (TextView) findViewById(R.id.page_heading),
                 (TextView) findViewById(R.id.page1),
                 (TextView) findViewById(R.id.page2),
@@ -53,14 +53,16 @@ public class Home_Page extends AppCompatActivity {
         };
 
 
-        fade = AnimationUtils.loadAnimation(this,R.anim.home_page_fade);
+//        fade = AnimationUtils.loadAnimation(this,R.anim.home_page_fade);
 
 
         Integer time = 300;
-        for (TextView page : pages) {
-                   page.startAnimation(fade);
+
+        for (TextView textView : textViews) {
+                   Animation fade = AnimationUtils.loadAnimation(this,R.anim.home_page_fade);
+                   textView.startAnimation(fade);
                    fade.setDuration(time);
-                   time+= 100;
+                   time+= 200;
              }
 
         btn3.setOnClickListener(new View.OnClickListener() {
