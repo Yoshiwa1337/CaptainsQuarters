@@ -10,19 +10,23 @@ import java.util.Random;
 
 public class PirateInvaders extends Game {
 
-	GameScreen gameScreen;
+//	GameScreen gameScreen;
+	MainMenuScreen mainMenuScreen;
 
 	public static Random random = new Random();
 
 	@Override
 	public void create() {
-		gameScreen = new GameScreen();
-		setScreen(gameScreen);
+//		gameScreen = new GameScreen();
+//		setScreen(gameScreen);
+		mainMenuScreen = new MainMenuScreen();
+		setScreen(mainMenuScreen);
 	}
 
 	@Override
 	public void dispose() {
-		gameScreen.dispose();
+//		gameScreen.dispose();
+		mainMenuScreen.dispose();
 	}
 
 	@Override
@@ -32,6 +36,7 @@ public class PirateInvaders extends Game {
 
 	@Override
 	public void resize(int width, int height) {
-		gameScreen.resize(width, height);
+//		gameScreen.resize(width, height);
+		mainMenuScreen.resize(width, height);
 	}
 }
