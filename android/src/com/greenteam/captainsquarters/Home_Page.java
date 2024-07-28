@@ -1,5 +1,6 @@
 package com.greenteam.captainsquarters;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,7 @@ public class Home_Page extends AppCompatActivity {
 
     TextView[] textViews;
     Animation fade;
+    Class<?> [] pages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,8 @@ public class Home_Page extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
 
-        TextView btn3 = (TextView) findViewById(R.id.page3);
+        pages = new Class[]{null,null,Ship_View.class,Trivia_Page.class,null,null,null,null,login.class};
+
 
 //        btn1.setOnHoverListener(new View.OnHoverListener() {
 //            @Override
@@ -56,24 +60,41 @@ public class Home_Page extends AppCompatActivity {
 //        fade = AnimationUtils.loadAnimation(this,R.anim.home_page_fade);
 
 
-        Integer time = 300;
+        Integer time = 100;
 
+       int pageCount = 0;
         for (TextView textView : textViews) {
                    Animation fade = AnimationUtils.loadAnimation(this,R.anim.home_page_fade);
                    textView.startAnimation(fade);
                    fade.setDuration(time);
-                   time+= 200;
-             }
+                   time+= 100;
 
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn3.setShadowLayer(50,0,0, Color.BLACK);
-                Intent intent = new Intent(getApplicationContext(),Ship_View.class);
-                startActivity(intent);
+                   if(textView.getId() != R.id.page_heading ){
+                       int finalPageCount = pageCount;
+                       textView.setOnClickListener(new View.OnClickListener() {
+                           @Override
+                           public void onClick(View v) {
+                               textView.setShadowLayer(50,0,0, Color.BLACK);
+                               Intent intent = new Intent(getApplicationContext(),pages[finalPageCount]);
+                               startActivity(intent);
+                           }
+                        });
+                       pageCount++;
+                       }
 
-            }
-        });
+
+        }
+
+
+//        textViews[3].setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                textViews[3].setShadowLayer(50,0,0, Color.BLACK);
+//                Intent intent = new Intent(getApplicationContext(),pages[0]);
+//                startActivity(intent);
+//
+//            }
+//        });
 
     }
 }

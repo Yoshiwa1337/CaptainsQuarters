@@ -44,7 +44,7 @@ public class Ship_View extends AppCompatActivity {
 
     TextView page_hint;
 
-    ConstraintLayout shipLayout;
+    ConstraintLayout btnContainer;
 
     ArrayList<ArrayList<View>> views;
 
@@ -67,8 +67,8 @@ public class Ship_View extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View v = inflater.inflate(R.layout.back_btn,null);
         backBtn = v.findViewById(R.id.back_btn);
-        shipLayout = (ConstraintLayout)findViewById(R.id.btnContainer);
-        shipLayout.addView(v);
+        btnContainer = (ConstraintLayout)findViewById(R.id.btnContainer);
+        btnContainer.addView(v);
 
         views = new ArrayList<ArrayList<View>>();
         views.add(new ArrayList<View>(Arrays.asList(pageTitle,shipImg)));
@@ -103,91 +103,6 @@ public class Ship_View extends AppCompatActivity {
 
             i++;
         }
-//
-//        dialog1 = new Dialog(Ship_View.this);
-//        dialog1.setContentView(R.layout.pop_up_box1);
-//        dialog1.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog1.getWindow().setBackgroundDrawable(getDrawable(R.drawable.pop_up_box_bg));
-//        dialog1.setCancelable(false);
-//
-//        dialog2 = new Dialog(Ship_View.this);
-//        dialog2.setContentView(R.layout.pop_up_box2);
-//        dialog2.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog2.getWindow().setBackgroundDrawable(getDrawable(R.drawable.pop_up_box_bg));
-//        dialog2.setCancelable(false);
-//
-//        dialog3 = new Dialog(Ship_View.this);
-//        dialog3.setContentView(R.layout.pop_up_box3);
-//        dialog3.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog3.getWindow().setBackgroundDrawable(getDrawable(R.drawable.pop_up_box_bg));
-//        dialog3.setCancelable(false);
-//
-//        dialog4 = new Dialog(Ship_View.this);
-//        dialog4.setContentView(R.layout.pop_up_box4);
-//        dialog4.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog4.getWindow().setBackgroundDrawable(getDrawable(R.drawable.pop_up_box_bg));
-//        dialog4.setCancelable(false);
-//
-//        close_dialogue1 = dialog1.findViewById(R.id.pop_up_close_btn1);
-//        close_dialogue2 = dialog2.findViewById(R.id.pop_up_close_btn2);
-//        close_dialogue3 = dialog3.findViewById(R.id.pop_up_close_btn3);
-//        close_dialogue4 = dialog4.findViewById(R.id.pop_up_close_btn4);
-//
-//        close_dialogue1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog1.dismiss();
-//            }
-//        });
-//
-//        area1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {dialog1.show();}
-//
-//        });
-//
-//        close_dialogue2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog2.dismiss();
-//            }
-//        });
-//
-//        area2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog2.show();
-//            }
-//        });
-//
-//        close_dialogue3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog3.dismiss();
-//            }
-//        });
-//
-//        area3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog3.show();
-//            }
-//        });
-//
-//        close_dialogue4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog4.dismiss();
-//            }
-//        });
-//
-//        area4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog4.show();
-//            }
-//        });
-
 
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -198,39 +113,8 @@ public class Ship_View extends AppCompatActivity {
             }
         });
 
-//        fade= new Animation[]
-//                {AnimationUtils.loadAnimation(this, R.anim.ship_fade1),
-//                        AnimationUtils.loadAnimation(this, R.anim.ship_fade2),
-//                        AnimationUtils.loadAnimation(this, R.anim.ship_fade4),
-//                        AnimationUtils.loadAnimation(this, R.anim.ship_fade5),
-//                        AnimationUtils.loadAnimation(this, R.anim.ship_fade3),
-//                        AnimationUtils.loadAnimation(this, R.anim.ship_fade6),
-//                        AnimationUtils.loadAnimation(this, R.anim.ship_fade7),
-//                        AnimationUtils.loadAnimation(this, R.anim.ship_fade8)
-//                };
-//
-//        pageTitle.startAnimation(fade[0]);
-//        shipImg.startAnimation(fade[1]);
-//        area1.startAnimation(fade[2]);
-//        area2.startAnimation(fade[3]);
-//        area3.startAnimation(fade[4]);
-//        area4.startAnimation(fade[5]);
-//        page_hint.startAnimation(fade[6]);
-//        shipLayout.startAnimation(fade[7]);
 
-
-
-//   views = new View[]{pageTitle,shipImg,areas1,area4,area2,area3,backBtn};
-//        views = new View[][]{{pageTitle,shipImg},{areas[0],area4,area2,area3},{backBtn}};
-
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-//                flattendedView = views.stream().flatMap(list->list.stream()).toList();
-//            }
-//        }
-
-    Integer time = 300;
+    Integer time = 100;
 
     for(ArrayList<View> array:views){
         for(View view: array){
@@ -238,7 +122,7 @@ public class Ship_View extends AppCompatActivity {
             Animation fade = AnimationUtils.loadAnimation(this,R.anim.ship_view_fade);
             fade.setDuration(time);
             view.startAnimation(fade);
-            time+=200;
+            time+=100;
 
         }
 

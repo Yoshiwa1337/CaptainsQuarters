@@ -2,11 +2,14 @@ package com.greenteam.captainsquarters;
 
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,17 +24,19 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
     Button ansA,ansB,ansC,ansD;
     Button submitBtn;
 
+
     int score=0;
     int totalQuestion= QuestionAnswer.question.length;
     int currentQuestionIndex = 0;
     String selectedAnswer = "";
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.trivia_page);
 
         totalQuestionsTextView = findViewById(R.id.total_questions);
         questionsTextView = findViewById(R.id.question);
@@ -51,12 +56,19 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
 
         loadNewQuestion();
 
-
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button backBtn = findViewById(R.id.back_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+                startActivity(intent);
+            }
         });
     }
 
@@ -69,6 +81,7 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
         ansD.setBackgroundColor(Color.rgb(110,38,14));
 
         Button clickedButton=(Button)view;
+
         if(clickedButton.getId()==R.id.submit_btn){
             if(selectedAnswer.equals(QuestionAnswer.correctAnswers[currentQuestionIndex])){
                 score++;
@@ -82,6 +95,13 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
             selectedAnswer = clickedButton.getText().toString();
             clickedButton.setBackgroundColor(Color. rgb(160,82,45));
         }
+
+//        if(clickedButton.getId()==R.id.back_btn){
+//            Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
+//            Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+//            startActivity(intent);
+//        }
+
 
     }
 
@@ -122,4 +142,6 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
         currentQuestionIndex =0;
         loadNewQuestion();
     }
+
+
 }
