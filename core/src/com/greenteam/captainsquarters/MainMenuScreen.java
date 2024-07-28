@@ -32,8 +32,11 @@ public class MainMenuScreen implements Screen {
 
 
     //HUD
-    BitmapFont font;
+    BitmapFont font1;
+    BitmapFont font2;
+    BitmapFont font3;
     float hudVerticalMargin, hudLeftX, hudRightX, hudCentreX, hudRow1Y, hudRow2Y, hudRow3Y, hudSectionWidth;
+    int width, height, x1, y1, x2, y2, x3, y3;
 
     MainMenuScreen(){
 
@@ -44,32 +47,43 @@ public class MainMenuScreen implements Screen {
 
         batch = new SpriteBatch();
 
-        prepareHUD();
 
     }
 
-    private void prepareHUD(){
+    private void prepareHUD(Color color){
         FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Pieces-of-Eight.otf"));
         FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         fontParameter.size = 72;
         fontParameter.borderWidth = 5;
         fontParameter.borderColor = Color.BLACK;
-        fontParameter.color = Color.WHITE;
-        font = fontGenerator.generateFont(fontParameter);
+        fontParameter.color = color;
+        font1 = fontGenerator.generateFont(fontParameter);
+        font2 = fontGenerator.generateFont(fontParameter);
+        font3 = fontGenerator.generateFont(fontParameter);
 
         //Scale font to world
-        font.getData().setScale(0.08f);
+        font1.getData().setScale(0.08f);
+        font2.getData().setScale(0.08f);
+        font3.getData().setScale(0.08f);
 
         //calculate hud margins, etc.
-        hudVerticalMargin = font.getCapHeight() / 2;
+        hudVerticalMargin = font1.getCapHeight() / 2;
         hudLeftX = hudVerticalMargin;
         hudRightX = WORLD_WIDTH * 2/3 - hudLeftX;
         hudCentreX = WORLD_WIDTH / 3;
         hudRow1Y = WORLD_HEIGHT * 2/3 - hudVerticalMargin;
-        hudRow2Y = hudRow1Y - hudVerticalMargin - font.getCapHeight()*2;
-        hudRow3Y = hudRow2Y - hudVerticalMargin - font.getCapHeight()*2;
+        hudRow2Y = hudRow1Y - hudVerticalMargin - font1.getCapHeight()*2;
+        hudRow3Y = hudRow2Y - hudVerticalMargin - font1.getCapHeight()*2;
         hudSectionWidth = WORLD_WIDTH / 3;
+
+        font1.getScaleY();
+
+        width = (int) font1.getLineHeight();
+        height = (int) font1.getCapHeight();
+        x1 = (WORLD_WIDTH - height*2);
+        x2 = x1 + width;
+
     }
 
     @Override
@@ -77,6 +91,12 @@ public class MainMenuScreen implements Screen {
         batch.begin();
         batch.draw(background, 0, 0, WORLD_WIDTH, WORLD_HEIGHT);
 
+        if(Gdx.input.getX() > x1){
+            prepareHUD(Color.YELLOW);
+        }
+        else{
+            prepareHUD(Color.WHITE);
+        }
         updateAndRenderHUD();
 
 
@@ -85,11 +105,11 @@ public class MainMenuScreen implements Screen {
 
     private void updateAndRenderHUD(){
         //first word column
-        font.draw(batch, "Start Game", hudCentreX, hudRow1Y, hudSectionWidth, Align.center, false);
+        font1.draw(batch, "Start Game", hudCentreX, hudRow1Y, hudSectionWidth, Align.center, false);
         //second word column
-        font.draw(batch, "History", hudCentreX, hudRow2Y, hudSectionWidth, Align.center, false);
+        font2.draw(batch, "History", hudCentreX, hudRow2Y, hudSectionWidth, Align.center, false);
         //third word column
-        font.draw(batch, "Home", hudCentreX, hudRow3Y, hudSectionWidth, Align.center, false);
+        font3.draw(batch, "Home", hudCentreX, hudRow3Y, hudSectionWidth, Align.center, false);
         //Top row rendering
 //        font.draw(batch, "Score", hudLeftX, hudRow1Y, hudSectionWidth, Align.left, false);
 //        font.draw(batch, "Shield", hudCentreX, hudRow1Y, hudSectionWidth, Align.center, false);
