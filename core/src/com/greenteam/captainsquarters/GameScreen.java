@@ -62,8 +62,11 @@ public class GameScreen implements Screen {
     BitmapFont font;
     float hudVerticalMargin, hudLeftX, hudRightX, hudCentreX, hudRow1Y, hudRow2Y, hudSectionWidth;
 
+    PirateInvaders game;
 
-    GameScreen() {
+
+    GameScreen(PirateInvaders game) {
+        this.game = game;
 
         camera = new OrthographicCamera();
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
