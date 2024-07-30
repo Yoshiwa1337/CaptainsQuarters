@@ -68,9 +68,9 @@ public class MainMenuScreen implements Screen {
 //        batch.draw(startButtonInactive, 20, 10, 30, 10);
         float x = 100;
 
-        if(Gdx.input.getX() > 100 && Gdx.input.getX() < viewport.getScreenWidth() - 100){
+        if(Gdx.input.getX() > 100 && Gdx.input.getX() < viewport.getScreenWidth() - 100 && Gdx.input.getY() < 575 && Gdx.input.getY() > 575 - 30){
             batch.draw(startButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
-            if(Gdx.input.isKeyPressed(SPACE)){
+            if(Gdx.input.isTouched()){
                 this.dispose();
                 game.setScreen(new GameScreen(game));
 //                Screen GameScreen = new GameScreen();
