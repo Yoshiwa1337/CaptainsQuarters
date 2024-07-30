@@ -27,8 +27,17 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(login.this, signup.class);
+                Intent i = new Intent(getApplicationContext(), signup.class);
                 startActivity(i);
+            }
+        });
+
+        Button backBtn = findViewById(R.id.back_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+                startActivity(intent);
             }
         });
     }

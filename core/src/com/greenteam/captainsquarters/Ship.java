@@ -11,8 +11,9 @@ abstract class Ship {
     int shield;
 
     //dimensions and positioning
-    float xPosition, yPosition; //lower-left corner default
-    float width, height;
+//    float xPosition, yPosition; //lower-left corner default
+//    float width, height;
+    Rectangle boundingBox;
 
     //cannon info
     float cannonWidth, cannonHeight;
@@ -32,10 +33,11 @@ abstract class Ship {
                 TextureRegion cannonTextureRegion) {
         this.movementSpeed = movementSpeed;
         this.shield = shield;
-        this.xPosition = xCentre - width/2; //storing lowerleft corner
-        this.yPosition = yCentre - height/2; //storing lowerleft corner
-        this.width = width;
-        this.height = height;
+//        this.xPosition = ; //storing lowerleft corner
+//        this.yPosition = ; //storing lowerleft corner
+//        this.width = width;
+//        this.height = height;
+        this.boundingBox = new Rectangle(xCentre - width/2, yCentre - height/2, width, height);
         this.cannonWidth = cannonWidth;
         this.cannonHeight = cannonHeight;
         this.cannonMovementSpeed = cannonMovementSpeed;
@@ -57,16 +59,27 @@ abstract class Ship {
     public abstract Cannon[] fireCannons();
 
     public boolean intersects(Rectangle otherRectangle){
-        Rectangle thisRectangle = new Rectangle(xPosition, yPosition, width, height);
-        return thisRectangle.overlaps(otherRectangle);
+        return boundingBox.overlaps(otherRectangle);
+    }
+
+    public boolean hitAndCheckDestroyed(Cannon cannon){
+        if(shield > 0){
+            shield --;
+            return false;
+        }
+        return true;
+    }
+
+    public void translate(float xChange, float yChange){
+        boundingBox.setPosition(boundingBox.x+xChange, boundingBox.y+yChange);
     }
 
 
     public void draw(Batch batch){
-        batch.draw(shipTextureRegion, xPosition, yPosition, width, height);
+        batch.draw(shipTextureRegion, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
         //drawn second so its displayed above
         if (shield > 0){
-            batch.draw(shieldTextureRegion, xPosition, yPosition+0.5f, width, height);
+            batch.draw(shieldTextureRegion, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
         }
     }
 }

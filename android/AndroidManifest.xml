@@ -49,6 +49,13 @@ xmlns:tools="http://schemas.android.com/tools">
     <activity
         android:name=".login"
         android:exported="false" />
+    <activity
+        android:name=".Trivia_Page"
+        android:exported="false" />
+
+    <activity
+        android:name=".AndroidLauncher"
+        android:exported="false"></activity>
 
 </application>
 
