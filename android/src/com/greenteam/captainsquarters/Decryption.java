@@ -19,7 +19,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Decryption extends AppCompatActivity {
-    ImageView backBtn;
+
     ConstraintLayout btnContainer;
 
     @Override
@@ -28,16 +28,7 @@ public class Decryption extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_decryption);
 
-        Button backBtn = findViewById(R.id.back_btn);
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
-                startActivity(intent);
-            }
-
-        });
+        ImageView backBtn = findViewById(R.id.back_btn);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

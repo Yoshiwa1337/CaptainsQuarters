@@ -40,15 +40,15 @@
                 app:layout_constraintStart_toEndOf="@+id/textView" />
 
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="164dp"
+                android:layout_height="62dp"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="#00FFFFFF"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_menu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:padding="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/back_btn" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -80,11 +80,12 @@ Your goal is to sail from one end of the map to the other while defending your s
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <ImageView
+                android:id="@+id/imageView29"
                 android:layout_width="match_parent"
                 android:layout_height="700dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_lower"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
-                android:scaleType="fitXY"/>
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

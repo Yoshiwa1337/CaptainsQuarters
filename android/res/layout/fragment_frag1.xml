@@ -15,7 +15,7 @@
         android:text="Captain John Huckle built a pirate ship called Raider's Bay with the mission of freeing captured pirates. Huckle was looking for treasure to solve economic problems, but his true intention was to find a mystical four-leaf clover that would grant wishes. All his wishes did not come true and on his last mission his luck ran out when his entire crew died during the storm on the Raptarical Sea."
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:fontFamily="@font/piecesofeight"
+        android:fontFamily="@font/pieces_eight_font"
         android:textSize="22dp"></TextView>
 
 

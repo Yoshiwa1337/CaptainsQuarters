@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,7 +33,7 @@ public class login extends AppCompatActivity {
             }
         });
 
-        Button backBtn = findViewById(R.id.back_btn);
+        ImageView backBtn = findViewById(R.id.back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,5 +41,6 @@ public class login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

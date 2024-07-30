@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Huckle's parrot named Kiwicho helps the players with hints and warnings. Enemy ships include Wave Crushers, Dark Dragon and the powerful boss Demon Jones, who summons baby seahorses."
-        android:fontFamily="@font/piecesofeight"
+        android:fontFamily="@font/pieces_eight_font"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"

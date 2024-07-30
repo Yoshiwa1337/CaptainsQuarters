@@ -33,7 +33,7 @@ public class Home_Page extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
 
-        pages = new Class[]{null,null,Ship_View.class,Trivia_Page.class,null, Decryption.class,null,null,login.class, AndroidLauncher.class};
+        pages = new Class[]{How_to_Play.class, Backstory.class,Ship_View.class,Trivia_Page.class,null, Decryption.class,null,null, signup.class, AndroidLauncher.class};
 
 
 //        btn1.setOnHoverListener(new View.OnHoverListener() {
