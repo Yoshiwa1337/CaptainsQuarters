@@ -12,11 +12,7 @@
         android:id="@+id/back_btn"
         android:layout_width="119dp"
         android:layout_height="53dp"
-        android:layout_below="@+id/submit_btn"
-        android:layout_alignStart="@+id/submit_btn"
-        android:background="@drawable/back_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="@drawable/back_btn" />
 
     <TextView
         android:id="@+id/textView2"
