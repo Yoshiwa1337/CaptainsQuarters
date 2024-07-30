@@ -45,6 +45,8 @@ public class MainMenuScreen implements Screen {
     //textures
     Texture startButtonActive;
     Texture startButtonInactive;
+    Texture exitButtonActive;
+    Texture exitButtonInactive;
 
     MainMenuScreen(PirateInvaders game){
         this.game = game;
@@ -56,6 +58,9 @@ public class MainMenuScreen implements Screen {
 
         startButtonActive = new Texture("start-txt-hover.png");
         startButtonInactive = new Texture("start-txt.png");
+        exitButtonActive = new Texture("exit-txt-hover.png");
+        exitButtonInactive = new Texture("exit-txt.png");
+
 
         batch = new SpriteBatch();
     }
@@ -66,8 +71,9 @@ public class MainMenuScreen implements Screen {
 //        batch.draw(startButtonInactive, 20, 10, 30, 10);
         float x = 100;
 
-        if(Gdx.input.getX() > 100 && Gdx.input.getX() < viewport.getScreenWidth() - 100 && Gdx.input.getY() < 575 && Gdx.input.getY() > 575 - 30){
-            batch.draw(startButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
+
+        if(Gdx.input.getX() > 100 && Gdx.input.getX() < viewport.getScreenWidth() - 100 && Gdx.input.getY() < 475 && Gdx.input.getY() > 475 - 30){
+            batch.draw(startButtonActive, (float) (WORLD_WIDTH - 30) / 2, 30, 30, 10);
             if(Gdx.input.isTouched()){
                 this.dispose();
                 game.setScreen(new GameScreen(game));
@@ -76,7 +82,19 @@ public class MainMenuScreen implements Screen {
             }
         }
         else{
-            batch.draw(startButtonInactive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
+            batch.draw(startButtonInactive, (float) (WORLD_WIDTH - 30) / 2, 30, 30, 10);
+        }
+
+        if(Gdx.input.getX() > 130 && Gdx.input.getX() < viewport.getScreenWidth() - 130 && Gdx.input.getY() < 575 && Gdx.input.getY() > 575 - 30){
+            batch.draw(exitButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
+            if(Gdx.input.isTouched()){
+                Gdx.app.exit();
+//                Screen GameScreen = new GameScreen();
+//                game.setScreen(GameScreen);
+            }
+        }
+        else{
+            batch.draw(exitButtonInactive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
         }
 
 
