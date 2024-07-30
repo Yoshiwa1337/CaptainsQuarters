@@ -15,6 +15,15 @@ xmlns:tools="http://schemas.android.com/tools">
     android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
     tools:ignore="UnusedAttribute">
     <activity
+        android:name=".AndroidLauncher"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <activity
         android:name=".Home_Page"
         android:exported="true">
         <intent-filter>
@@ -52,6 +61,12 @@ xmlns:tools="http://schemas.android.com/tools">
     <activity
         android:name=".Trivia_Page"
         android:exported="false" />
+    <activity
+        android:name=".How_to_Play"
+        android:exported="false" />
+
+
+
 
     <activity
         android:name=".AndroidLauncher"

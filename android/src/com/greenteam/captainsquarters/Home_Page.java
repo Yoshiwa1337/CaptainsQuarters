@@ -32,6 +32,7 @@ public class Home_Page extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
 
+
         pages = new Class[]{null,null,Ship_View.class,Trivia_Page.class,null, Decryption.class,null,null,login.class, AndroidLauncher.class};
 
 
