@@ -58,8 +58,6 @@ public class MainMenuScreen implements Screen {
         startButtonInactive = new Texture("start-txt.png");
 
         batch = new SpriteBatch();
-
-
     }
 
     public void render(float delta) {
