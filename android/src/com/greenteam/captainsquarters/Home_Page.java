@@ -32,7 +32,8 @@ public class Home_Page extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
 
-        pages = new Class[]{null,null,Ship_View.class,Trivia_Page.class,null, Decryption.class,null,null, signup.class};
+
+        pages = new Class[]{null,null,Ship_View.class,Trivia_Page.class,null, Decryption.class,null,null,login.class, AndroidLauncher.class};
 
 
 //        btn1.setOnHoverListener(new View.OnHoverListener() {
@@ -53,7 +54,8 @@ public class Home_Page extends AppCompatActivity {
                 (TextView) findViewById(R.id.page6),
                 (TextView) findViewById(R.id.page7),
                 (TextView) findViewById(R.id.page8),
-                (TextView) findViewById(R.id.page9)
+                (TextView) findViewById(R.id.page9),
+                (TextView) findViewById(R.id.page10)
         };
 
 

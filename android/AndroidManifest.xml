@@ -68,6 +68,9 @@ xmlns:tools="http://schemas.android.com/tools">
 
 
 
+    <activity
+        android:name=".AndroidLauncher"
+        android:exported="false"></activity>
 
 </application>
 
