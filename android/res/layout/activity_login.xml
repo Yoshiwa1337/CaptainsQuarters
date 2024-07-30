@@ -12,20 +12,20 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="116dp"
         android:fontFamily="@font/headingf"
         android:text="Log in"
         android:textColor="#070707"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/usertext"
-        android:layout_width="410dp"
-        android:layout_height="51dp"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
         android:background="#370E01"
         android:ems="10"
         android:fontFamily="@font/text"
@@ -34,15 +34,16 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/usernameemail"
-        app:layout_constraintHorizontal_bias="0.018"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/usernameemail"
         app:layout_constraintTop_toBottomOf="@+id/usernameemail"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <EditText
         android:id="@+id/passlogtext"
-        android:layout_width="410dp"
-        android:layout_height="51dp"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="296dp"
         android:background="#370E01"
         android:ems="10"
         android:fontFamily="@font/text"
@@ -50,18 +51,14 @@
         android:textColor="#FBFBFB"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintEnd_toEndOf="@+id/usertext" />
 
     <Button
         android:id="@+id/loginbtn"
         android:layout_width="130dp"
         android:layout_height="63dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="92dp"
         android:backgroundTint="#370E01"
         android:fontFamily="@font/text"
         android:text="Log in"
@@ -74,42 +71,40 @@
         android:id="@+id/usernameemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
         android:fontFamily="@font/text"
         android:text="Username/Email:"
         android:textColor="#070707"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:layout_marginBottom="412dp"
-        android:text="Password:"
-        android:textColor="#070707"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/usertext"
-        app:layout_constraintHorizontal_bias="0.015"
-        app:layout_constraintStart_toStartOf="@+id/usertext"
-        app:layout_constraintTop_toBottomOf="@+id/usertext"
-        app:layout_constraintVertical_bias="0.03" />
 
     <Button
         android:id="@+id/registerbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
+        android:layout_marginStart="124dp"
         android:layout_marginTop="105dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#370E01"
         android:fontFamily="@font/text"
         android:text="New here? Register"
-        android:textSize="10sp"
+        android:textColor="#FFFDFD"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/loginbtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passlogtext" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/text"
+        android:text="password:"
+        android:textColor="#070707"
+        app:layout_constraintStart_toStartOf="@+id/passlogtext"
+        app:layout_constraintTop_toBottomOf="@+id/usertext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

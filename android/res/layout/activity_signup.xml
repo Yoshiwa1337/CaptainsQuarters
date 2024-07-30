@@ -18,10 +18,10 @@
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.138" />
 
     <TextView
         android:id="@+id/textView3"
@@ -150,13 +150,14 @@
         android:layout_marginBottom="53dp"
         android:backgroundTint="#370E01"
         android:text="Sign-up"
+        android:textColor="#FBFBFB"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signinbtn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/usertext"
@@ -178,27 +179,15 @@
 
     <Button
         android:id="@+id/signinbtn"
-        android:layout_width="81dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="196dp"
-        android:backgroundTint="#370E01"
-        android:text="Sign-in"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpasswordtext" />
-
-    <TextView
-        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="192dp"
-        android:fontFamily="@font/text"
-        android:text="Already registered?"
-        android:textColor="#070707"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="124dp"
+        android:backgroundTint="#370E01"
+        android:text="Already registere? Log-in"
+        android:textColor="#FBFBFB"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpasswordtext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
