@@ -8,7 +8,7 @@
     android:background="@drawable/backgroungimg"
     tools:context=".login">
 
-    <Button
+    <ImageView
         android:id="@+id/back_btn"
         android:layout_width="119dp"
         android:layout_height="53dp"

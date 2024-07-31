@@ -10,6 +10,17 @@
     tools:context=".Decryption">
 
 
+  <ImageView
+      android:id="@+id/back_btn"
+      android:layout_width="164dp"
+      android:layout_height="62dp"
+      android:layout_marginStart="4dp"
+      android:layout_marginBottom="4dp"
+      android:padding="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:srcCompat="@drawable/back_btn" />
+
   <View
       android:id="@+id/divider"
       android:layout_width="match_parent"
@@ -418,14 +429,4 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.877" />
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/btnContainer"
-      android:layout_width="215dp"
-      android:layout_height="81dp"
-      android:layout_marginStart="4dp"
-      android:layout_marginBottom="4dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent">
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

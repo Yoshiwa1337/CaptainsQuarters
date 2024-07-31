@@ -62,7 +62,7 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
             return insets;
         });
 
-        Button backBtn = findViewById(R.id.back_btn);
+        ImageView backBtn = findViewById(R.id.back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

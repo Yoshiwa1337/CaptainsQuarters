@@ -1,9 +1,13 @@
 package com.greenteam.captainsquarters;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +18,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.airbnb.lottie.ImageAssetDelegate;
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieComposition;
+import com.airbnb.lottie.LottieImageAsset;
+import com.airbnb.lottie.LottieTask;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -52,6 +63,8 @@ public class Ship_View extends AppCompatActivity {
 
     ImageView backBtn;
 
+    LottieAnimationView shipAnim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +73,46 @@ public class Ship_View extends AppCompatActivity {
 
         pageTitle = (TextView)findViewById(R.id.Ship_View_Title);
 
-        shipImg = (ImageView) findViewById(R.id.shipImg);
+        shipImg = findViewById(R.id.shipImg);
+//        shipImg.setImageAssetDelegate(new ImageAssetDelegate() {
+//            @Nullable
+//            @Override
+//            public Bitmap fetchBitmap(LottieImageAsset asset) {
+//               if(asset.getId().equals())
+//            }
+//        });
+
+//        shipImg.addAnimatorListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationStart(Animator animation) {
+//                LottieComposition composition = shipImg.getComposition();
+//                if (composition != null) {
+//                    for (String key : composition.getImages().keySet()) {
+//                        Log.d("LottieImageAssets", "Image asset: " + key);
+//                    }
+//                }
+//            }
+//        });
+
+
+//        LottieAnimationView shipImg = findViewById(R.id.shipImg);
+//        shipImg.setAnimation(R.raw.ship_anim);
+//        shipImg.setRepeatCount(LottieDrawable.INFINITE);
+//
+//        LottieTask<LottieComposition> compositionTask = LottieCompositionFactory.fromRawRes(this, R.raw.ship_anim);
+//        compositionTask.addListener(new LottieListener<LottieComposition>() {
+//            @Override
+//            public void onResult(LottieComposition composition) {
+//                shipImg.setComposition(composition);
+//                shipImg.playAnimation();
+//            }
+//        });
+//        compositionTask.addFailureListener(new LottieListener<Throwable>() {
+//            @Override
+//            public void onResult(Throwable result) {
+//                Log.e("Lottie", "Unable to parse composition", result);
+//            }
+//        });
 
         page_hint = (TextView)findViewById(R.id.page_hint);
 

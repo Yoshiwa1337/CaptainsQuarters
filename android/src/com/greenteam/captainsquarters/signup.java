@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ public class signup extends AppCompatActivity {
     EditText username, email, password, cpassword;
     Button signin, signup;
     dbhelper DBhelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,16 @@ public class signup extends AppCompatActivity {
         signin = (Button) findViewById(R.id.signinbtn);
         signup = (Button) findViewById(R.id.signupbtn);
         DBhelper = new dbhelper(this);
+
+        ImageView backBtn = findViewById(R.id.back_btn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+                startActivity(intent);
+            }
+        });
 
 
         signin.setOnClickListener(new View.OnClickListener() {
