@@ -11,7 +11,7 @@ public class dbhelper extends SQLiteOpenHelper {
 
     private static String DBname = "lone";
     private static String DBtable = "users";
-    private static int DBversion = 1;
+    private static int DBversion = 2;
 
     private static String ID = "Id";
     private static String username = "username";

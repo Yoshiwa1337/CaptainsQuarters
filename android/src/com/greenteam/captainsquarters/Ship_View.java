@@ -63,7 +63,7 @@ public class Ship_View extends AppCompatActivity {
 
     ImageView backBtn;
 
-    LottieAnimationView shipAnim;
+//    LottieAnimationView shipAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,16 +156,6 @@ public class Ship_View extends AppCompatActivity {
             i++;
         }
 
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
-                startActivity(intent);
-            }
-        });
-
-
     Integer time = 100;
 
     for(ArrayList<View> array:views){
@@ -179,6 +169,14 @@ public class Ship_View extends AppCompatActivity {
         }
 
     }
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Home_Page.class);
+                startActivity(intent);
+            }
+        });
 }
 
 }
