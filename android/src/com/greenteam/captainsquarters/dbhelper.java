@@ -14,9 +14,9 @@ public class dbhelper extends SQLiteOpenHelper {
     private static int DBversion = 1;
 
     private static String ID = "Id";
-    private static String username = "username";
-    private static String email = "email";
-    private static String password = "password";
+    private static String userName = "username";
+    private static String Email = "email";
+    private static String Password = "password";
 
 
     public dbhelper(@Nullable Context context) {
@@ -26,7 +26,7 @@ public class dbhelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String query = " CREATE TABLE " + DBtable + "("+ ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +username +" TEXT, "+email + " TEXT," + password + " TEXT)";
+        String query = " CREATE TABLE " + DBtable + "("+ ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +userName +" TEXT, "+Email + " TEXT," + Password + " TEXT)";
         db.execSQL(query);
     }
 
@@ -42,11 +42,11 @@ public class dbhelper extends SQLiteOpenHelper {
         SQLiteDatabase  db = this.getWritableDatabase();  //help you insert data
 
         ContentValues values = new ContentValues();
-        values.put(username, username);
-        values.put(email, email);
-        values.put(password, password);
+        values.put(userName, username);
+        values.put(Email, email);
+        values.put(Password, password);
 
         db.insert(DBtable, null, values);  //insert method to insert data into table
-//        db.close();
+
     }
 }

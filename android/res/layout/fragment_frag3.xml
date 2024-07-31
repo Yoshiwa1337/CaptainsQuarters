@@ -10,14 +10,13 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:fontFamily="@font/pieces_eight_font"
         android:text="Legend has it that there is a creature called Octopus Scarface. He is a half-octopus, half-human pirate who controls the weather and sea creatures. A mysterious item transformed him and he dominated many adventures before he was defeated in SeaFire.
 With all this knowledge, we must embark on a long journey of exploration, combat and more."
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="22dp"
-        android:layout_margin="30dp"
-        android:fontFamily="@font/piecesofeight">
-    </TextView>
+        android:textSize="22dp"></TextView>
 
 
 </FrameLayout>

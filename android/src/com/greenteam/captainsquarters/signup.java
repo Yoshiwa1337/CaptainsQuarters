@@ -55,7 +55,7 @@ public class signup extends AppCompatActivity {
 //                        Users user = new Users(0, chusername, chemail, chcpassword);
                     dbhelper dbhelper = new dbhelper(getApplicationContext());
                     dbhelper.addUser(chusername, chemail, chpassword);
-                    Toast.makeText(signup.this, "User registered successfully.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(signup.this, "Registration was successful please log in.", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(signup.this, "Passwords do not match.", Toast.LENGTH_LONG).show();
                 }
