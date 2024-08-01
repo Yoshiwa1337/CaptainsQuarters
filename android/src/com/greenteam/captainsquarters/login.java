@@ -30,7 +30,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(),Home_Page.class);
+                Intent i = new Intent(getApplicationContext(), signup.class);
                 startActivity(i);
             }
         });
@@ -45,7 +45,7 @@ public class login extends AppCompatActivity {
                 if (DBhelper.checkUser(email, password))
                 {
                     Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), signup.class);
+                    Intent intent = new Intent(getApplicationContext(), Home_Page.class);
                     startActivity(intent);
                 }
                 else
