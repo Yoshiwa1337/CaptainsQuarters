@@ -26,8 +26,16 @@ abstract class MenuText {
         this.boundingBox = new Rectangle(xCentre - btnWidth/2, yCentre - btnHeight/2, btnWidth, btnHeight);
     }
 
-    public void draw(Batch batch){
-        batch.draw(textInactiveTexture, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
+//    public void draw(Batch batch){
+//        batch.draw(textInactiveTexture, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
+//    }
+    public void draw(Batch batch, Boolean status){
+        if(status){
+            batch.draw(textActiveTexture, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
+        }
+        else{
+            batch.draw(textInactiveTexture, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
+        }
     }
 
 

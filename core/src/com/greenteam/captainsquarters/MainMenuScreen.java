@@ -65,8 +65,8 @@ public class MainMenuScreen implements Screen {
 
 
         if(Gdx.input.getX() > 100 && Gdx.input.getX() < viewport.getScreenWidth() - 100 && Gdx.input.getY() < 475 && Gdx.input.getY() > 475 - 30){
-            batch.draw(startButtonActive, (float) WORLD_WIDTH / 3, (float) WORLD_HEIGHT / 2, 30, 10);
-//            startText.draw(batch);
+//            batch.draw(startButtonActive, (float) WORLD_WIDTH / 3, (float) WORLD_HEIGHT / 2, 30, 10);
+            startText.draw(batch, true);
             if(Gdx.input.isTouched()){
                 this.dispose();
                 game.setScreen(new GameScreen(game));
@@ -75,12 +75,12 @@ public class MainMenuScreen implements Screen {
             }
         }
         else{
-            startText.draw(batch);
+            startText.draw(batch, false);
         }
 
         if(Gdx.input.getX() > 130 && Gdx.input.getX() < viewport.getScreenWidth() - 130 && Gdx.input.getY() < 575 && Gdx.input.getY() > 575 - 30){
 //            batch.draw(exitButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
-            homeText.draw(batch);
+            homeText.draw(batch, true);
             if(Gdx.input.isTouched()){
                 Gdx.app.exit();
 //                Screen GameScreen = new GameScreen();
@@ -89,7 +89,7 @@ public class MainMenuScreen implements Screen {
         }
         else{
 //            batch.draw(homeButtonInactive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
-            homeText.draw(batch);
+            homeText.draw(batch, false);
         }
 
 
