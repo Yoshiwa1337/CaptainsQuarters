@@ -2,6 +2,7 @@ package com.greenteam.captainsquarters;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -47,6 +48,20 @@ public class dbhelper extends SQLiteOpenHelper {
         values.put(Password, password);
 
         db.insert(DBtable, null, values);  //insert method to insert data into table
-
     }
+
+
+    public Boolean checkUser(String email, String password)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] columns = {ID};
+        String selection = Email + " = ? AND " + Password + " = ? ";
+        String[] selectionArgs = {email, password};
+        Cursor cursor = db.query(DBtable, columns, selection, selectionArgs, null, null, null);
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+        return  cursorCount > 0;
+    }
+
 }
