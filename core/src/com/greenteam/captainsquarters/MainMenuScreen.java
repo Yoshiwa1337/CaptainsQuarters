@@ -63,8 +63,12 @@ public class MainMenuScreen implements Screen {
 //        batch.draw(startButtonInactive, 20, 10, 30, 10);
         float x = 100;
 
+        float x1 = startText.boundingBox.x  + startText.boundingBox.width*2;
+        float y1 = startText.boundingBox.y + startText.boundingBox.height*2;
+        float x2 = x1 + startText.boundingBox.width;
+        float y2 = y1 + startText.boundingBox.height;
 
-        if(Gdx.input.getX() > 100 && Gdx.input.getX() < viewport.getScreenWidth() - 100 && Gdx.input.getY() < 475 && Gdx.input.getY() > 475 - 30){
+        if(Gdx.input.getX() > 100 && Gdx.input.getX() < viewport.getScreenWidth() - 100 && Gdx.input.getY() > 330 - START_BTN_WIDTH && Gdx.input.getY() < 332){
 //            batch.draw(startButtonActive, (float) WORLD_WIDTH / 3, (float) WORLD_HEIGHT / 2, 30, 10);
             startText.draw(batch, true);
             if(Gdx.input.isTouched()){
@@ -78,7 +82,7 @@ public class MainMenuScreen implements Screen {
             startText.draw(batch, false);
         }
 
-        if(Gdx.input.getX() > 130 && Gdx.input.getX() < viewport.getScreenWidth() - 130 && Gdx.input.getY() < 575 && Gdx.input.getY() > 575 - 30){
+        if(Gdx.input.getX() > 130 && Gdx.input.getX() < viewport.getScreenWidth() - 130 && Gdx.input.getY() > 430 - START_BTN_WIDTH && Gdx.input.getY() < 432){
 //            batch.draw(exitButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
             homeText.draw(batch, true);
             if(Gdx.input.isTouched()){
