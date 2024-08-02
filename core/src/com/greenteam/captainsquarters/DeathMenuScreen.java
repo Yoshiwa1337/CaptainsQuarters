@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import java.util.Locale;
 
 public class DeathMenuScreen implements Screen {
+    PirateInvaders game;
 
     //screen
     private Camera camera;
@@ -46,10 +47,11 @@ public class DeathMenuScreen implements Screen {
     Texture homeButtonInactive;
 
     //objects
-    private StartText startText;
+    private StartText playText;
     private HomeText homeText;
 
     DeathMenuScreen(PirateInvaders game){
+        this.game = game;
 
         camera = new OrthographicCamera();
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
@@ -64,8 +66,8 @@ public class DeathMenuScreen implements Screen {
         homeButtonInactive = new Texture("home-txt.png");
 
 
-//        startText = new StartText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, startButtonInactive, startButtonActive);
-//        homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);
+        playText = new StartText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, playAgainButtonInactive, playAgainButtonActive);
+        homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);
 
 
         batch = new SpriteBatch();
@@ -106,37 +108,37 @@ public class DeathMenuScreen implements Screen {
 //        float y2 = y1 + startText.boundingBox.height;
 //
 //        //track touch location
-//        Vector2 touchPoint = new Vector2(Gdx.input.getX(), Gdx.input.getY());
+        Vector2 touchPoint = new Vector2(Gdx.input.getX(), Gdx.input.getY());
 //        //convert to world positioning
-//        touchPoint = viewport.unproject(touchPoint);
+        touchPoint = viewport.unproject(touchPoint);
 //
-//        if(startText.boundingBox.contains(touchPoint)){
-////            batch.draw(startButtonActive, (float) WORLD_WIDTH / 3, (float) WORLD_HEIGHT / 2, 30, 10);
-//            startText.draw(batch, true);
-//            if(Gdx.input.isTouched()){
-//                this.dispose();
-//                game.setScreen(new GameScreen(game));
-////                Screen GameScreen = new GameScreen();
-////                game.setScreen(GameScreen);
-//            }
-//        }
-//        else{
-//            startText.draw(batch, false);
-//        }
-//
-//        if(homeText.boundingBox.contains(touchPoint)){
-////            batch.draw(exitButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
-//            homeText.draw(batch, true);
-//            if(Gdx.input.isTouched()){
-//                Gdx.app.exit();
-////                Screen GameScreen = new GameScreen();
-////                game.setScreen(GameScreen);
-//            }
-//        }
-//        else{
-////            batch.draw(homeButtonInactive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
-//            homeText.draw(batch, false);
-//        }
+        if(playText.boundingBox.contains(touchPoint)){
+//            batch.draw(startButtonActive, (float) WORLD_WIDTH / 3, (float) WORLD_HEIGHT / 2, 30, 10);
+            playText.draw(batch, true);
+            if(Gdx.input.isTouched()){
+                this.dispose();
+                game.setScreen(new GameScreen(game));
+//                Screen GameScreen = new GameScreen();
+//                game.setScreen(GameScreen);
+            }
+        }
+        else{
+            playText.draw(batch, false);
+        }
+
+        if(homeText.boundingBox.contains(touchPoint)){
+//            batch.draw(exitButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
+            homeText.draw(batch, true);
+            if(Gdx.input.isTouched()){
+                Gdx.app.exit();
+//                Screen GameScreen = new GameScreen();
+//                game.setScreen(GameScreen);
+            }
+        }
+        else{
+//            batch.draw(homeButtonInactive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
+            homeText.draw(batch, false);
+        }
 
 
         batch.end();
