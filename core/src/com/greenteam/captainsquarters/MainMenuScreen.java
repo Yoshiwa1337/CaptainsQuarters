@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -68,7 +69,12 @@ public class MainMenuScreen implements Screen {
         float x2 = x1 + startText.boundingBox.width;
         float y2 = y1 + startText.boundingBox.height;
 
-        if(Gdx.input.getX() > 100 && Gdx.input.getX() < viewport.getScreenWidth() - 100 && Gdx.input.getY() > 330 - START_BTN_WIDTH && Gdx.input.getY() < 332){
+        //track touch location
+        Vector2 touchPoint = new Vector2(Gdx.input.getX(), Gdx.input.getY());
+        //convert to world positioning
+        touchPoint = viewport.unproject(touchPoint);
+
+        if(startText.boundingBox.contains(touchPoint)){
 //            batch.draw(startButtonActive, (float) WORLD_WIDTH / 3, (float) WORLD_HEIGHT / 2, 30, 10);
             startText.draw(batch, true);
             if(Gdx.input.isTouched()){
