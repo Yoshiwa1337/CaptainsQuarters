@@ -8,13 +8,13 @@ class HomeText extends MenuText{
         super(xCentre, yCentre, btnWidth, btnHeight, textInactive, textActive);
     }
 
-    @Override
-    public void draw(Batch batch, Boolean status) {
-        if(status){
-            batch.draw(textActiveTexture, boundingBox.x, boundingBox.y - boundingBox.height*2, boundingBox.width, boundingBox.height);
-        }
-        else{
-            batch.draw(textInactiveTexture, boundingBox.x, boundingBox.y - boundingBox.height*2, boundingBox.width, boundingBox.height);
-        }
-    }
+//    @Override
+//    public void draw(Batch batch, Boolean status) {
+//        if(status){
+//            batch.draw(textActiveTexture, boundingBox.x, boundingBox.y - boundingBox.height*2, boundingBox.width, boundingBox.height);
+//        }
+//        else{
+//            batch.draw(textInactiveTexture, boundingBox.x, boundingBox.y - boundingBox.height*2, boundingBox.width, boundingBox.height);
+//        }
+//    }
 }

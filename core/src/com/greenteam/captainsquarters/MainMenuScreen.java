@@ -52,7 +52,7 @@ public class MainMenuScreen implements Screen {
         homeButtonInactive = new Texture("exit-txt.png");
 
         startText = new StartText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, startButtonInactive, startButtonActive);
-        homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);
+        homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);
 
 
         batch = new SpriteBatch();
@@ -88,7 +88,7 @@ public class MainMenuScreen implements Screen {
             startText.draw(batch, false);
         }
 
-        if(Gdx.input.getX() > 130 && Gdx.input.getX() < viewport.getScreenWidth() - 130 && Gdx.input.getY() > 430 - START_BTN_WIDTH && Gdx.input.getY() < 432){
+        if(homeText.boundingBox.contains(touchPoint)){
 //            batch.draw(exitButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
             homeText.draw(batch, true);
             if(Gdx.input.isTouched()){
