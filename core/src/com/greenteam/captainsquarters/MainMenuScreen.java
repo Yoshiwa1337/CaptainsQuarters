@@ -48,8 +48,8 @@ public class MainMenuScreen implements Screen {
 
         startButtonActive = new Texture("start-txt-hover.png");
         startButtonInactive = new Texture("start-txt.png");
-        homeButtonActive = new Texture("exit-txt-hover.png");
-        homeButtonInactive = new Texture("exit-txt.png");
+        homeButtonActive = new Texture("home-txt-hover.png");
+        homeButtonInactive = new Texture("home-txt.png");
 
         startText = new StartText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, startButtonInactive, startButtonActive);
         homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);

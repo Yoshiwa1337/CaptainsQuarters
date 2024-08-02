@@ -3,12 +3,18 @@ package com.greenteam.captainsquarters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.util.Locale;
 
 public class DeathMenuScreen implements Screen {
 
@@ -27,10 +33,15 @@ public class DeathMenuScreen implements Screen {
     //HUD
     private static final int START_BTN_WIDTH = 30;
     private static final int START_BTN_HEIGHT = 10;
+    //HUD-font
+    BitmapFont font;
+    float hudVerticalMargin, hudLeftX, hudRightX, hudCentreX, hudRow1Y, hudRow2Y, hudSectionWidth;
 
     //textures
-    Texture startButtonActive;
-    Texture startButtonInactive;
+    Texture playAgainButtonActive;
+    Texture playAgainButtonInactive;
+    Texture scoreText;
+    Texture scoreValue;
     Texture homeButtonActive;
     Texture homeButtonInactive;
 
@@ -45,16 +56,42 @@ public class DeathMenuScreen implements Screen {
 
         background = new Texture("background_img.png");
 
-//        startButtonActive = new Texture("start-txt-hover.png");
-//        startButtonInactive = new Texture("start-txt.png");
-//        homeButtonActive = new Texture("exit-txt-hover.png");
-//        homeButtonInactive = new Texture("exit-txt.png");
+        playAgainButtonActive = new Texture("play-again-txt-hover.png");
+        playAgainButtonInactive = new Texture("play-again-txt.png");
+        scoreText = new Texture("score-txt.png");
+        //score value stuff
+        homeButtonActive = new Texture("home-txt-hover.png");
+        homeButtonInactive = new Texture("home-txt.png");
+
 
 //        startText = new StartText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, startButtonInactive, startButtonActive);
 //        homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);
 
 
         batch = new SpriteBatch();
+    }
+
+    private void prepareHUD(){
+        FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Pieces-of-Eight.otf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+        fontParameter.size = 72;
+        fontParameter.borderWidth = 5;
+        fontParameter.borderColor = Color.BLACK;
+        fontParameter.color = Color.WHITE;
+        font = fontGenerator.generateFont(fontParameter);
+
+        //Scale font to world
+        font.getData().setScale(0.08f);
+
+        //calculate hud margins, etc.
+        hudVerticalMargin = font.getCapHeight() / 2;
+        hudLeftX = hudVerticalMargin;
+        hudRightX = WORLD_WIDTH * 2/3 - hudLeftX;
+        hudCentreX = WORLD_WIDTH / 3;
+        hudRow1Y = WORLD_HEIGHT - hudVerticalMargin;
+        hudRow2Y = hudRow1Y - hudVerticalMargin - font.getCapHeight();
+        hudSectionWidth = WORLD_WIDTH / 3;
     }
 
     public void render(float delta) {
@@ -105,6 +142,31 @@ public class DeathMenuScreen implements Screen {
         batch.end();
     }
 
+//    private void updateAndRenderHUD(){
+//        //Top row rendering
+//        font.draw(batch, "Score", hudLeftX, hudRow1Y, hudSectionWidth, Align.left, false);
+//        font.draw(batch, "Shield", hudCentreX, hudRow1Y, hudSectionWidth, Align.center, false);
+//        font.draw(batch, "Lives", hudRightX, hudRow1Y, hudSectionWidth, Align.right, false);
+//        //Second row rendering - values
+//        font.draw(batch, String.format(Locale.getDefault(), "%06d", score), hudLeftX, hudRow2Y, hudSectionWidth, Align.left, false);
+//        font.draw(batch, String.format(Locale.getDefault(), "%02d", playerShip.shield), hudCentreX, hudRow2Y, hudSectionWidth, Align.center, false);
+//        font.draw(batch, String.format(Locale.getDefault(), "%02d", playerShip.lives), hudRightX, hudRow2Y, hudSectionWidth, Align.right, false);
+//    }
+//
+//    private void spawnEnemyShips(float deltaTime){
+//        enemySpawnTimer += deltaTime;
+//        if(enemySpawnTimer > timeBetweenEnemySpawns){
+//            enemyShipList.add(new EnemyShip(PirateInvaders.random.nextFloat()*(WORLD_WIDTH-10)+5,
+//                    WORLD_HEIGHT - 5,
+//                    10, 10,
+//                    47, 1,
+//                    0.4f, 4,
+//                    50, 0.8f,
+//                    enemyShipTextureRegion, enemyShieldTextureRegion, enemyCannonTextureRegion));
+//            enemySpawnTimer -= timeBetweenEnemySpawns;
+//        }
+//
+//    }
 
     @Override
     public void show() {
