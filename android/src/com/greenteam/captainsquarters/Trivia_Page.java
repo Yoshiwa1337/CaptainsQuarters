@@ -113,7 +113,7 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
             finishQuiz();
             int Trivia_Score = score;
             Dbhelper.addTriviaScore(Trivia_Score);
-            Dbhelper.displayTriviaScore();
+//            Dbhelper.displayTriviaScore();
             return;
         }
 
