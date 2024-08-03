@@ -18,6 +18,7 @@ import java.util.Locale;
 
 public class DeathMenuScreen implements Screen {
     PirateInvaders game;
+    int score;
 
     //screen
     private Camera camera;
@@ -51,8 +52,9 @@ public class DeathMenuScreen implements Screen {
     private ScoreText scoreText;
     private HomeText homeText;
 
-    DeathMenuScreen(PirateInvaders game){
+    DeathMenuScreen(PirateInvaders game, int score){
         this.game = game;
+        this.score = score;
 
         camera = new OrthographicCamera();
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
@@ -73,6 +75,7 @@ public class DeathMenuScreen implements Screen {
 
 
         batch = new SpriteBatch();
+        prepareHUD();
     }
 
     private void prepareHUD(){
@@ -128,7 +131,7 @@ public class DeathMenuScreen implements Screen {
             playText.draw(batch, false);
         }
 
-        scoreText.draw(batch, false);
+//        scoreText.draw(batch, false);
 
         if(homeText.boundingBox.contains(touchPoint)){
 //            batch.draw(exitButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);
@@ -144,35 +147,19 @@ public class DeathMenuScreen implements Screen {
             homeText.draw(batch, false);
         }
 
+        updateAndRenderHUD();
+
 
         batch.end();
     }
 
-//    private void updateAndRenderHUD(){
-//        //Top row rendering
-//        font.draw(batch, "Score", hudLeftX, hudRow1Y, hudSectionWidth, Align.left, false);
-//        font.draw(batch, "Shield", hudCentreX, hudRow1Y, hudSectionWidth, Align.center, false);
-//        font.draw(batch, "Lives", hudRightX, hudRow1Y, hudSectionWidth, Align.right, false);
-//        //Second row rendering - values
-//        font.draw(batch, String.format(Locale.getDefault(), "%06d", score), hudLeftX, hudRow2Y, hudSectionWidth, Align.left, false);
-//        font.draw(batch, String.format(Locale.getDefault(), "%02d", playerShip.shield), hudCentreX, hudRow2Y, hudSectionWidth, Align.center, false);
-//        font.draw(batch, String.format(Locale.getDefault(), "%02d", playerShip.lives), hudRightX, hudRow2Y, hudSectionWidth, Align.right, false);
-//    }
-//
-//    private void spawnEnemyShips(float deltaTime){
-//        enemySpawnTimer += deltaTime;
-//        if(enemySpawnTimer > timeBetweenEnemySpawns){
-//            enemyShipList.add(new EnemyShip(PirateInvaders.random.nextFloat()*(WORLD_WIDTH-10)+5,
-//                    WORLD_HEIGHT - 5,
-//                    10, 10,
-//                    47, 1,
-//                    0.4f, 4,
-//                    50, 0.8f,
-//                    enemyShipTextureRegion, enemyShieldTextureRegion, enemyCannonTextureRegion));
-//            enemySpawnTimer -= timeBetweenEnemySpawns;
-//        }
-//
-//    }
+    private void updateAndRenderHUD(){
+        //Top row rendering
+        font.draw(batch, "Score", hudCentreX, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT), hudSectionWidth, Align.center, false);
+        //Second row rendering - values
+        font.draw(batch, String.format(Locale.getDefault(), "%d", score), hudCentreX, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), hudSectionWidth, Align.center, false);
+    }
+
 
     @Override
     public void show() {

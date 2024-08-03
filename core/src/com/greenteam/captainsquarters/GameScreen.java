@@ -359,7 +359,7 @@ public class GameScreen implements Screen {
                     playerShip.lives --;
                     if(playerShip.lives < 0){
                         this.dispose();
-                        game.setScreen(new DeathMenuScreen(game));
+                        game.setScreen(new DeathMenuScreen(game, score));
                     }
                 }
                 CannonListIterator.remove();
