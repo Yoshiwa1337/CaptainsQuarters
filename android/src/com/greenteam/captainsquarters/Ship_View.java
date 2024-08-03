@@ -74,45 +74,6 @@ public class Ship_View extends AppCompatActivity {
         pageTitle = (TextView)findViewById(R.id.Ship_View_Title);
 
         shipImg = findViewById(R.id.shipImg);
-//        shipImg.setImageAssetDelegate(new ImageAssetDelegate() {
-//            @Nullable
-//            @Override
-//            public Bitmap fetchBitmap(LottieImageAsset asset) {
-//               if(asset.getId().equals())
-//            }
-//        });
-
-//        shipImg.addAnimatorListener(new AnimatorListenerAdapter() {
-//            @Override
-//            public void onAnimationStart(Animator animation) {
-//                LottieComposition composition = shipImg.getComposition();
-//                if (composition != null) {
-//                    for (String key : composition.getImages().keySet()) {
-//                        Log.d("LottieImageAssets", "Image asset: " + key);
-//                    }
-//                }
-//            }
-//        });
-
-
-//        LottieAnimationView shipImg = findViewById(R.id.shipImg);
-//        shipImg.setAnimation(R.raw.ship_anim);
-//        shipImg.setRepeatCount(LottieDrawable.INFINITE);
-//
-//        LottieTask<LottieComposition> compositionTask = LottieCompositionFactory.fromRawRes(this, R.raw.ship_anim);
-//        compositionTask.addListener(new LottieListener<LottieComposition>() {
-//            @Override
-//            public void onResult(LottieComposition composition) {
-//                shipImg.setComposition(composition);
-//                shipImg.playAnimation();
-//            }
-//        });
-//        compositionTask.addFailureListener(new LottieListener<Throwable>() {
-//            @Override
-//            public void onResult(Throwable result) {
-//                Log.e("Lottie", "Unable to parse composition", result);
-//            }
-//        });
 
         page_hint = (TextView)findViewById(R.id.page_hint);
 
