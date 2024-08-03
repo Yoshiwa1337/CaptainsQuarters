@@ -41,13 +41,14 @@ public class DeathMenuScreen implements Screen {
     //textures
     Texture playAgainButtonActive;
     Texture playAgainButtonInactive;
-    Texture scoreText;
+    Texture scoreTexture;
     Texture scoreValue;
     Texture homeButtonActive;
     Texture homeButtonInactive;
 
     //objects
     private StartText playText;
+    private ScoreText scoreText;
     private HomeText homeText;
 
     DeathMenuScreen(PirateInvaders game){
@@ -60,14 +61,15 @@ public class DeathMenuScreen implements Screen {
 
         playAgainButtonActive = new Texture("play-again-txt-hover.png");
         playAgainButtonInactive = new Texture("play-again-txt.png");
-        scoreText = new Texture("score-txt.png");
+        scoreTexture = new Texture("score-txt.png");
         //score value stuff
         homeButtonActive = new Texture("home-txt-hover.png");
         homeButtonInactive = new Texture("home-txt.png");
 
 
         playText = new StartText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, playAgainButtonInactive, playAgainButtonActive);
-        homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);
+        scoreText = new ScoreText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), START_BTN_WIDTH, START_BTN_HEIGHT, scoreTexture, scoreTexture);
+        homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2)*2, START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);
 
 
         batch = new SpriteBatch();
@@ -125,6 +127,8 @@ public class DeathMenuScreen implements Screen {
         else{
             playText.draw(batch, false);
         }
+
+        scoreText.draw(batch, false);
 
         if(homeText.boundingBox.contains(touchPoint)){
 //            batch.draw(exitButtonActive, (float) (WORLD_WIDTH - 30) / 2, 10, 30, 10);

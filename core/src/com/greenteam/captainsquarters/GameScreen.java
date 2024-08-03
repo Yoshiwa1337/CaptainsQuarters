@@ -355,7 +355,7 @@ public class GameScreen implements Screen {
                 //makes contact with player
                 if(playerShip.hitAndCheckDestroyed(cannon)){
                     explosionList.add(new Explosion(explosionTextures, new Rectangle(playerShip.boundingBox), 1.6f));
-                    playerShip.shield = 10; //FOR TESTING, REMOVE THIS WHEN ADDING PLAYER DEATHS
+//                    playerShip.shield = 10; //FOR TESTING, REMOVE THIS WHEN ADDING PLAYER DEATHS
                     playerShip.lives --;
                     if(playerShip.lives < 0){
                         this.dispose();
