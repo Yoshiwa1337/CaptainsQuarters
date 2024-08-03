@@ -60,6 +60,7 @@ public class signup extends AppCompatActivity {
                 String chpassword = password.getText().toString();
                 String chcpassword = cpassword.getText().toString();
 
+
                 if (chusername.isEmpty() && chemail.isEmpty() && chpassword.isEmpty() && chcpassword.isEmpty()) {
                     Toast.makeText(signup.this, "Please fill in all the fields.", Toast.LENGTH_LONG).show();
                 } else if (chpassword.equals(chcpassword)) {

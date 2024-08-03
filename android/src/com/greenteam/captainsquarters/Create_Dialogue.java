@@ -19,11 +19,6 @@ public class Create_Dialogue extends Dialog{
 
     }
 
-//    public Create_Dialogue(@NonNull Context context,int themeid){
-//        super(context,themeid);
-//        initDialogue(context);
-//    }
-
 
     private void initDialogue(Context context){
       getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -34,7 +29,6 @@ public class Create_Dialogue extends Dialog{
 
     public void setDialogueLayout(int layoutId){ setContentView(layoutId);}
 
-//  public void stDialogueBackground(Drawable background){ getWindow().setBackgroundDrawable(background);}
 
 
 
