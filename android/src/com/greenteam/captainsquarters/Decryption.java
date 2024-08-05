@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class Decryption extends AppCompatActivity {
 
     ConstraintLayout btnContainer;
+    AppCompatImageButton btn1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
