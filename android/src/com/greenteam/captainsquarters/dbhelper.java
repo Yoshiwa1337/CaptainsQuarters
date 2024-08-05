@@ -1,5 +1,6 @@
 package com.greenteam.captainsquarters;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -92,20 +93,36 @@ public class dbhelper extends SQLiteOpenHelper {
         TriviaValues.put(Trivia_UserId,userId);
         long tId = db.insert(Trivia_table,null,TriviaValues);
 
-        Log.d("Trivia id", String.valueOf(tId));
 
     }
 
-    public Cursor displayTriviaScore(){
-        SQLiteDatabase db = this.getWritableDatabase();
 
-//        String query = "SELECT * FROM " + Trivia_table + " WHERE " + Trivia_UserId + " =1 ";
+    public String displayTriviaScore(){
+
+        String dbString = "";
+        SQLiteDatabase db = getWritableDatabase();
+//        String query = "SELECT * FROM " + Trivia_table + " WHERE " + Trivia_ID + " =1 ";
+        String query = "SELECT * FROM " + Trivia_table ;
 //        String query = "SELECT * FROM Trivia_Score";
-        Cursor cursor = db.rawQuery("SELECT * FROM Trivia_Score",null);
-        Log.d("TriviaScore", String.valueOf(cursor));
-        return cursor;
+        Cursor cursor = db.rawQuery(query,null);
+        cursor.moveToFirst();
+
+        while(!cursor.isAfterLast()) {
+            int columnIndex = cursor.getColumnIndex("Score");
+
+            if(columnIndex != -1){
+                dbString += cursor.getString(columnIndex);
+                dbString += "\n";
+            }
+
+            cursor.moveToNext();
+        }
+
+        db.close();
+        return dbString;
 
     }
 
-    //retrieve trivia scores from table form another method
+
+
 }
