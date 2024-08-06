@@ -2,6 +2,7 @@ package com.greenteam.captainsquarters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Locale;
@@ -360,6 +362,13 @@ public class GameScreen implements Screen {
                     if(playerShip.lives < 0){
                         this.dispose();
                         game.setScreen(new DeathMenuScreen(game, score));
+                        try {
+                            Gdx.files.local("assets/data/test.txt").file().createNewFile();
+                            FileHandle handle = Gdx.files.local("assets/data/test.txt");
+                            handle.writeString(String.valueOf(score), false);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
                 CannonListIterator.remove();
