@@ -65,8 +65,8 @@ public class DeathMenuScreen implements Screen {
         playAgainButtonInactive = new Texture("play-again-txt.png");
         scoreTexture = new Texture("score-txt.png");
         //score value stuff
-        homeButtonActive = new Texture("home-txt-hover.png");
-        homeButtonInactive = new Texture("home-txt.png");
+        homeButtonActive = new Texture("back_btn.png");
+        homeButtonInactive = new Texture("back_btn.png");
 
 
         playText = new StartText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, playAgainButtonInactive, playAgainButtonActive);

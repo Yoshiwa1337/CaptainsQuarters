@@ -48,8 +48,8 @@ public class MainMenuScreen implements Screen {
 
         startButtonActive = new Texture("start-txt-hover.png");
         startButtonInactive = new Texture("start-txt.png");
-        homeButtonActive = new Texture("home-txt-hover.png");
-        homeButtonInactive = new Texture("home-txt.png");
+        homeButtonActive = new Texture("back_btn.png");
+        homeButtonInactive = new Texture("back_btn.png");
 
         startText = new StartText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, START_BTN_WIDTH, START_BTN_HEIGHT, startButtonInactive, startButtonActive);
         homeText = new HomeText(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - (START_BTN_HEIGHT*2), START_BTN_WIDTH, START_BTN_HEIGHT, homeButtonInactive, homeButtonActive);
@@ -61,13 +61,6 @@ public class MainMenuScreen implements Screen {
     public void render(float delta) {
         batch.begin();
         batch.draw(background, 0, 0, WORLD_WIDTH, WORLD_HEIGHT);
-//        batch.draw(startButtonInactive, 20, 10, 30, 10);
-        float x = 100;
-
-        float x1 = startText.boundingBox.x  + startText.boundingBox.width*2;
-        float y1 = startText.boundingBox.y + startText.boundingBox.height*2;
-        float x2 = x1 + startText.boundingBox.width;
-        float y2 = y1 + startText.boundingBox.height;
 
         //track touch location
         Vector2 touchPoint = new Vector2(Gdx.input.getX(), Gdx.input.getY());
