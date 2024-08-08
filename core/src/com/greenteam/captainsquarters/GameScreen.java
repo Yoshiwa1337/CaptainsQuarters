@@ -362,6 +362,7 @@ public class GameScreen implements Screen {
                     if(playerShip.lives < 0){
                         this.dispose();
                         game.setScreen(new DeathMenuScreen(game, score));
+                        //Creating data file which holds scores to be read by database
                         try {
                             Gdx.files.local("assets/data/test.txt").file().createNewFile();
                             FileHandle handle = Gdx.files.local("assets/data/test.txt");
