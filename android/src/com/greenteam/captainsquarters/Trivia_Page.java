@@ -30,6 +30,7 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
     int currentQuestionIndex = 0;
     String selectedAnswer = "";
 
+    TriviaHelper triviaHelper = new TriviaHelper(this);
 
 
     @Override
@@ -55,6 +56,7 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
         totalQuestionsTextView.setText("Total Questions : "+totalQuestion);
 
         loadNewQuestion();
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -109,6 +111,9 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
 
         if(currentQuestionIndex ==totalQuestion){
             finishQuiz();
+            int Trivia_Score = score;
+            triviaHelper.addTriviaScore(Trivia_Score);
+//            Dbhelper.displayTriviaScore();
             return;
         }
 
