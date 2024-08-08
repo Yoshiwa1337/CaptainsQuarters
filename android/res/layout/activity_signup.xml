@@ -17,6 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/back_btn" />
 
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="202dp"
+        android:layout_height="183dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/parrot_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -66,7 +77,7 @@
         android:id="@+id/emailtext"
         android:layout_width="323dp"
         android:layout_height="35dp"
-        android:background="#370E01"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:fontFamily="@font/text"
         android:inputType="textEmailAddress"
@@ -97,7 +108,7 @@
         android:id="@+id/passwordtext"
         android:layout_width="323dp"
         android:layout_height="35dp"
-        android:background="#370E01"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:fontFamily="@font/text"
         android:inputType="textPassword"
@@ -136,7 +147,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="220dp"
-        android:background="#370E01"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:fontFamily="@font/text"
         android:inputType="textPassword"
@@ -157,7 +168,7 @@
         android:layout_marginTop="62dp"
         android:layout_marginEnd="140dp"
         android:layout_marginBottom="53dp"
-        android:backgroundTint="#370E01"
+        android:background="@drawable/rounded_button"
         android:text="Sign-up"
         android:textColor="#FBFBFB"
         android:textSize="24sp"
@@ -176,7 +187,7 @@
         android:layout_marginTop="208dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="35dp"
-        android:background="#370E01"
+        android:background="@drawable/rounded_edittext"
         android:textColor="#FBFBFB"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -192,7 +203,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="124dp"
-        android:backgroundTint="#370E01"
+        android:background="@drawable/rounded_button"
         android:text="Already registere? Log-in"
         android:textColor="#FBFBFB"
         android:textSize="12sp"
