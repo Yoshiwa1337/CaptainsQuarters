@@ -24,7 +24,6 @@ public class dbhelper extends SQLiteOpenHelper {
     private static String Email = "email";
     private static String Password = "password";
 
-    long userId = 1;
 
     public dbhelper(@Nullable Context context) {
         super(context, DBname, null, DBversion);
@@ -33,14 +32,11 @@ public class dbhelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String Create_Users_Table = " CREATE TABLE " + DBtable + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + userName +" TEXT, "
-                + Email + " TEXT,"
-                + Password + " TEXT)";
-        db.execSQL(Create_Users_Table);
-
+        String query = " CREATE TABLE " + DBtable + "("+ ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +userName +" TEXT, "+Email + " TEXT," + Password + " TEXT)";
+        db.execSQL(query);
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
