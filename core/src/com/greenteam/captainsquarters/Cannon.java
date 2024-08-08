@@ -7,8 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 class Cannon {
 
     //positioning
-    float xPosition, yPosition; //bottom center of cannon
-    float width, height;
+    Rectangle boundingBox;
 
     //physical attributes
     float movementSpeed; //world units per second
@@ -19,19 +18,20 @@ class Cannon {
     public Cannon(TextureRegion textureRegion, float movementSpeed, float height, float width, float yPosition, float xPosition) {
         this.textureRegion = textureRegion;
         this.movementSpeed = movementSpeed;
-        this.height = height;
-        this.width = width;
-        this.yPosition = yPosition;
-        this.xPosition = xPosition;
+        this.boundingBox = new Rectangle(xPosition, yPosition, width, height);
+//        this.height = height;
+//        this.width = width;
+//        this.yPosition = yPosition;
+//        this.xPosition = xPosition;
     }
 
     public void draw(Batch batch){
-        batch.draw(textureRegion, xPosition - width/2, yPosition, width, height);
+        batch.draw(textureRegion, boundingBox.x - boundingBox.width/2, boundingBox.y, boundingBox.width, boundingBox.height);
     }
 
-    public Rectangle getBoundingBox(){
-        return new Rectangle(xPosition, yPosition, width, height);
-    }
+//    public Rectangle getBoundingBox(){
+//        return boundingBox;
+//    }
 
 
 
