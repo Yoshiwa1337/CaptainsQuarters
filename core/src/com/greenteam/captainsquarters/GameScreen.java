@@ -74,7 +74,7 @@ public class GameScreen implements Screen {
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
 
         //setting texture atlas
-        textureAtlas = new TextureAtlas("imagefiles.atlas");
+        textureAtlas = new TextureAtlas("images.atlas");
 
         //setting up background
 
@@ -362,14 +362,14 @@ public class GameScreen implements Screen {
                     if(playerShip.lives < 0){
                         this.dispose();
                         game.setScreen(new DeathMenuScreen(game, score));
-                        //Creating data file which holds scores to be read by database
-                        try {
-                            Gdx.files.local("assets/data/test.txt").file().createNewFile();
-                            FileHandle handle = Gdx.files.local("assets/data/test.txt");
-                            handle.writeString(String.valueOf(score), false);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
+                        //Creating data file which holds scores to be read by database --stopped working
+//                        try {
+//                            Gdx.files.local("assets/data/test.txt").file().createNewFile();
+//                            FileHandle handle = Gdx.files.local("assets/data/test.txt");
+//                            handle.writeString(String.valueOf(score), true);
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
                     }
                 }
                 CannonListIterator.remove();
