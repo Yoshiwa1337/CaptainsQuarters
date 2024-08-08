@@ -43,7 +43,7 @@ dependencies {
     implementation libs.junit
     implementation libs.ext.junit
     implementation libs.espresso.core
-    implementation 'com.airbnb.android:lottie:6.4.1'
+//    implementation 'com.airbnb.android:lottie:6.4.1'
 }
 
 

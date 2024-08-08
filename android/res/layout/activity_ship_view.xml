@@ -102,6 +102,7 @@
         android:text="Click around the ship to find out what each area does"
         android:textColor="@color/black"
         android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@+id/shipImg"
         app:layout_constraintStart_toStartOf="@+id/shipImg"
         app:layout_constraintTop_toBottomOf="@+id/shipImg" />
 
