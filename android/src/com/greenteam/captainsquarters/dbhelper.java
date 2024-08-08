@@ -61,5 +61,17 @@ public class dbhelper extends SQLiteOpenHelper {
 
     }
 
+    public Boolean checkUser(String email, String password)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] columns = {ID};
+        String selection = Email + " = ? AND " + Password + " = ? ";
+        String[] selectionArgs = {email, password};
+        Cursor cursor = db.query(DBtable, columns, selection, selectionArgs, null, null, null);
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+        return  cursorCount > 0;
+    }
 
 }
