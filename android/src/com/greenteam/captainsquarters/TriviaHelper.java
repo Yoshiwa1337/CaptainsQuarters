@@ -22,13 +22,10 @@ public class TriviaHelper extends SQLiteOpenHelper{
 
         long userId = 1;
 
-        //Adam code line 21 - 25
         private static String Trivia_table = "Trivia_Score";
         private static String Trivia_ID = "Id";
         private static String Trivia_Score = "Score";
         private static String Trivia_UserId = "User_Id";
-        //Adam code
-
 
         public TriviaHelper(@Nullable Context context) {
             super(context, DBname, null, DBversion);
@@ -37,7 +34,6 @@ public class TriviaHelper extends SQLiteOpenHelper{
         @Override
         public void onCreate(SQLiteDatabase db) {
 
-            //Adam Code line 44-51d
             String Create_TriviaScore_Table ="CREATE TABLE " + Trivia_table + "("
                     + Trivia_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + Trivia_Score + " INTEGER NOT NULL,"
@@ -48,7 +44,6 @@ public class TriviaHelper extends SQLiteOpenHelper{
             db.execSQL(Create_TriviaScore_Table);
         }
 
-
         @Override
         public void onUpgrade(SQLiteDatabase db, int i, int i1) {
             db.execSQL("DROP TABLE IF EXISTS " + Trivia_table );// Adam Code
@@ -56,7 +51,6 @@ public class TriviaHelper extends SQLiteOpenHelper{
         }
 
 
-        // insert trivia score into trivia table
         public void addTriviaScore(int TriviaScore){
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues TriviaValues = new ContentValues();
@@ -70,10 +64,6 @@ public class TriviaHelper extends SQLiteOpenHelper{
 
         public LinkedHashMap<String,String>  displayTriviaScore(){
 
-//          String dbString = "";
-
-//            ArrayList<Object> values = new ArrayList<Object>();
-
             SQLiteDatabase db = getWritableDatabase();
 
             String query = "SELECT * FROM " + Trivia_table ;
@@ -82,8 +72,6 @@ public class TriviaHelper extends SQLiteOpenHelper{
             cursor.moveToFirst();
 
             PriorityQueue<Integer> scoreArr_Int = new PriorityQueue<Integer>();
-            ArrayList<String> scoreArr_Str = new ArrayList<String>();
-
 
             LinkedHashMap<String,String> values = new LinkedHashMap<String,String>();
 
@@ -107,23 +95,10 @@ public class TriviaHelper extends SQLiteOpenHelper{
 
             }
 
-
-
-//            for(Integer score: scoreArr){
-//
-//                if(scoreCount<=5) {
-//                    allScores += Integer.toString(score);
-//                }
-//
-//                scoreCount++;
-//            }
-
             String topScore = Integer.toString(Collections.max(scoreArr_Int));
 
             values.put("Top_Score", topScore);
             values.put("All_Scores",allScores);
-
-
 
             db.close();
             return values;
