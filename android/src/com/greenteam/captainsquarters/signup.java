@@ -15,6 +15,8 @@ public class signup extends AppCompatActivity {
     EditText username, email, password, cpassword;
     Button signin, signup;
     dbhelper DBhelper;
+    TriviaHelper triviaHelper;
+
 
 
     @Override
@@ -67,6 +69,8 @@ public class signup extends AppCompatActivity {
 
 //                        Users user = new Users(0, chusername, chemail, chcpassword);
                     dbhelper dbhelper = new dbhelper(getApplicationContext());
+                    triviaHelper = new TriviaHelper(getApplicationContext());
+
                     dbhelper.addUser(chusername, chemail, chpassword);
                     Toast.makeText(signup.this, "Registration was successful please log in.", Toast.LENGTH_LONG).show();
                 } else {

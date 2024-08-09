@@ -11,12 +11,14 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.PriorityQueue;
 
 public class dbhelper extends SQLiteOpenHelper {
 
     private static String DBname = "lone";
-    private static int DBversion = 2;
+    private static int DBversion = 3;
 
     private static String DBtable = "users";
     private static String ID = "Id";
@@ -38,6 +40,8 @@ public class dbhelper extends SQLiteOpenHelper {
                 + userName +" TEXT, "
                 + Email + " TEXT,"
                 + Password + " TEXT)";
+
+
         db.execSQL(Create_Users_Table);
 
     }
@@ -60,6 +64,8 @@ public class dbhelper extends SQLiteOpenHelper {
         db.insert(DBtable, null, values);  //insert method to insert data into table
 
     }
+
+
 
 
 }
