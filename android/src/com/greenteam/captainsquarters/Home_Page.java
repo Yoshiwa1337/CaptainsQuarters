@@ -32,18 +32,8 @@ public class Home_Page extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
 
+        pages = new Class[]{How_to_Play.class, Backstory.class,Ship_View.class,Trivia_Page.class,null, Decryption.class, Score_History.class,null, signup.class, AndroidLauncher.class};
 
-        pages = new Class[]{How_to_Play.class, Backstory.class,Ship_View.class,Trivia_Page.class,null, Decryption.class,null,null, signup.class, AndroidLauncher.class};
-
-
-//        btn1.setOnHoverListener(new View.OnHoverListener() {
-//            @Override
-//            public boolean onHover(View v, MotionEvent event) {
-//               btn1.setShadowLayer(50,0,0, Color.BLACK);
-//               return true;
-//            };
-//        });
-//
         textViews = new TextView[]{
                 (TextView) findViewById(R.id.page_heading),
                 (TextView) findViewById(R.id.page1),
@@ -57,10 +47,6 @@ public class Home_Page extends AppCompatActivity {
                 (TextView) findViewById(R.id.page9),
                 (TextView) findViewById(R.id.page10)
         };
-
-
-//        fade = AnimationUtils.loadAnimation(this,R.anim.home_page_fade);
-
 
         Integer time = 100;
 
@@ -84,19 +70,7 @@ public class Home_Page extends AppCompatActivity {
                        pageCount++;
                        }
 
-
         }
-
-
-//        textViews[3].setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                textViews[3].setShadowLayer(50,0,0, Color.BLACK);
-//                Intent intent = new Intent(getApplicationContext(),pages[0]);
-//                startActivity(intent);
-//
-//            }
-//        });
 
     }
 }
