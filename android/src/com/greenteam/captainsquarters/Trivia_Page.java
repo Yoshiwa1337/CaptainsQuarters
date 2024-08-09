@@ -30,7 +30,7 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
     int currentQuestionIndex = 0;
     String selectedAnswer = "";
 
-    TriviaHelper triviaHelper = new TriviaHelper(this);
+    TriviaHelper triviaHelper;
 
 
     @Override
@@ -112,6 +112,7 @@ public class Trivia_Page extends AppCompatActivity implements View.OnClickListen
         if(currentQuestionIndex ==totalQuestion){
             finishQuiz();
             int Trivia_Score = score;
+            triviaHelper = new TriviaHelper(this);
             triviaHelper.addTriviaScore(Trivia_Score);
 //            Dbhelper.displayTriviaScore();
             return;

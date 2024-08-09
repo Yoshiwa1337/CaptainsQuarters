@@ -18,7 +18,7 @@ import java.util.PriorityQueue;
 public class TriviaHelper extends SQLiteOpenHelper{
 
         private static String DBname = "lone";
-        private static int DBversion = 2;
+        private static int DBversion = 3;
 
         long userId = 1;
 
@@ -65,16 +65,12 @@ public class TriviaHelper extends SQLiteOpenHelper{
         public LinkedHashMap<String,String>  displayTriviaScore(){
 
             SQLiteDatabase db = getWritableDatabase();
-
             String query = "SELECT * FROM " + Trivia_table ;
-
             Cursor cursor = db.rawQuery(query,null);
             cursor.moveToFirst();
 
             PriorityQueue<Integer> scoreArr_Int = new PriorityQueue<Integer>();
-
             LinkedHashMap<String,String> values = new LinkedHashMap<String,String>();
-
             String allScores = "";
 
             int scoreCount = 1;
@@ -86,23 +82,17 @@ public class TriviaHelper extends SQLiteOpenHelper{
 
                     allScores += cursor.getString(columnIndex);
                     allScores += "\n";
-
                     scoreCount++;
                 }
-
                 scoreArr_Int.add(score_intValue);
                 cursor.moveToNext();
-
             }
 
             String topScore = Integer.toString(Collections.max(scoreArr_Int));
-
             values.put("Top_Score", topScore);
             values.put("All_Scores",allScores);
 
             db.close();
             return values;
-
         }
-
 }
