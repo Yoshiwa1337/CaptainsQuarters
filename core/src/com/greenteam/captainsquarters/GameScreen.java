@@ -2,6 +2,7 @@ package com.greenteam.captainsquarters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Locale;
@@ -72,7 +74,7 @@ public class GameScreen implements Screen {
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
 
         //setting texture atlas
-        textureAtlas = new TextureAtlas("imagefiles.atlas");
+        textureAtlas = new TextureAtlas("images.atlas");
 
         //setting up background
 
@@ -355,8 +357,20 @@ public class GameScreen implements Screen {
                 //makes contact with player
                 if(playerShip.hitAndCheckDestroyed(cannon)){
                     explosionList.add(new Explosion(explosionTextures, new Rectangle(playerShip.boundingBox), 1.6f));
-                    playerShip.shield = 10; //FOR TESTING, REMOVE THIS WHEN ADDING PLAYER DEATHS
+//                    playerShip.shield = 10; //FOR TESTING, REMOVE THIS WHEN ADDING PLAYER DEATHS
                     playerShip.lives --;
+                    if(playerShip.lives < 0){
+                        this.dispose();
+                        game.setScreen(new DeathMenuScreen(game, score));
+                        //Creating data file which holds scores to be read by database --stopped working
+//                        try {
+//                            Gdx.files.local("assets/data/test.txt").file().createNewFile();
+//                            FileHandle handle = Gdx.files.local("assets/data/test.txt");
+//                            handle.writeString(String.valueOf(score), true);
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+                    }
                 }
                 CannonListIterator.remove();
             }
