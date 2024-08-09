@@ -50,6 +50,18 @@ public class dbhelper extends SQLiteOpenHelper {
         db.insert(DBtable, null, values);  //insert method to insert data into table
     }
 
+//    public Boolean checkUser(String email, String password)
+//    {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String[] columns = {ID};
+//        String selection = Email + " = ? AND " + Password + " = ? ";
+//        String[] selectionArgs = {email, password};
+//        Cursor cursor = db.query(DBtable, columns, selection, selectionArgs, null, null, null);
+//        int cursorCount = cursor.getCount();
+//        cursor.close();
+//        db.close();
+//        return  cursorCount > 0;
+//    }
 
     public Boolean checkUser(String email, String password)
     {
