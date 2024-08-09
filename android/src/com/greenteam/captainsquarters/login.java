@@ -34,24 +34,24 @@ public class login extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = lemail.getText().toString().trim();
-                String password = pass.getText().toString().trim();
-
-                if (DBhelper.checkUser(email, password))
-                {
-                    Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), Home_Page.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    Toast.makeText(login.this, "Login failed, please check values.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        login.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String email = lemail.getText().toString().trim();
+//                String password = pass.getText().toString().trim();
+//
+//                if (DBhelper.checkUser(email, password))
+//                {
+//                    Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(getApplicationContext(), Home_Page.class);
+//                    startActivity(intent);
+//                }
+//                else
+//                {
+//                    Toast.makeText(login.this, "Login failed, please check values.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
         ImageView backBtn = findViewById(R.id.back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
